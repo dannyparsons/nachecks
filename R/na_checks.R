@@ -34,7 +34,7 @@
 #'
 #' check_prop_na(c(1:9, NA), 0.1, strict = TRUE)
 check_prop_na <- function(x, prop, strict = FALSE) {
-  if (missing(prop)) TRUE
+  if (missing(prop)) return(TRUE)
   if (strict) prop_na(x) < prop
   else prop_na(x) <= prop
 }
@@ -56,7 +56,7 @@ check_prop_na <- function(x, prop, strict = FALSE) {
 #'
 #' check_n_na(c(1:9, NA, NA, NA), 2)
 check_n_na <- function(x, n) {
-  if (missing(n)) TRUE
+  if (missing(n)) return(TRUE)
   n_na(x) <= n
 }
 
@@ -81,7 +81,7 @@ check_n_na <- function(x, n) {
 #'
 #' check_n_non_na(c(1:9, NA, NA, NA), 2)
 check_n_non_na <- function(x, n) {
-  if (missing(n)) TRUE
+  if (missing(n)) return(TRUE)
   n_non_na(x) >= n
 }
 
@@ -103,7 +103,7 @@ check_n_non_na <- function(x, n) {
 #'
 #' check_consec_na(c(rep(NA, 5), 1:2, rep(NA, 6)), 5)
 check_consec_na <- function(x, n) {
-  if (missing(n)) TRUE
+  if (missing(n)) return(TRUE)
   consec_na(x) <= n
 }
 
@@ -154,7 +154,7 @@ check_na <- function(x, prop, na, consec, non_na,
 
   (!is_prop || (is_prop && check_prop_na(x = x, prop = prop, strict = prop_strict))) &&
     (!is_na || (is_na && check_n_na(x = x, n = na))) &&
-    (!is_non_na || (is_non_na && check_non_na_n(x = x, n = non_na))) &&
+    (!is_non_na || (is_non_na && check_n_non_na(x = x, n = non_na))) &&
     # Done last as most computationally intensive
     (!is_consec || (is_consec && check_consec_na(x = x, n = consec)))
 }

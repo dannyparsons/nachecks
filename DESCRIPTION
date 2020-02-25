@@ -7,7 +7,8 @@ Authors@R: person("Danny", "Parsons", email = "danny@idems.international",
     comment = c(ORCID = "https://orcid.org/0000-0002-8333-9880"))
 Description: Missing Value Checks and Conditional Omit Functions.
 Suggests:
-    magrittr
+    magrittr,
+    testthat
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

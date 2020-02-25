@@ -32,7 +32,7 @@
 #'
 #' @return A vector of the same type as \code{x}. Either \code{x} with missing
 #'   values removed if all checks pass, or \code{x} unmodified if all checks do
-#'   not pass. For consistency with \code{\link[stats:na.fail]{na.omit}}, if missing
+#'   not pass. For consistency with \code{\link[stats::na.fail]{na.omit}}, if missing
 #'   values are removed, the indices of the removed values form an
 #'   \code{na.action} attribute of class \code{omit} in the result. If no
 #'   missing values are removed (because the checks failed or there were no missing values in \code{x}) then no \code{na.action} attribute is added.
@@ -82,7 +82,10 @@ na_omit_if_consec <- function(x, n) {
 
 label_na_omit <- function(x) {
   omit <- which(is.na(x))
-  x <- x[-omit]
-  attr(omit, "class") <- "omit"
-  attr(x, "na.action") <- omit
+  if(length(omit) > 0) {
+    x <- x[-omit]
+    attr(omit, "class") <- "omit"
+    attr(x, "na.action") <- omit
+  }
+  x
 }
