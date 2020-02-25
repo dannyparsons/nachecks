@@ -1,17 +1,31 @@
 #' naflex: Flexible missing value checks and omit functions.
 #'
-#' The \code{naflex} package provides greater flexibility for dealing with missing values, particularly when calculating summaries.
+#' The \code{naflex} package provides greater flexibility for dealing with
+#' missing values than the \code{na.rm = TRUE/FALSE} option available in most
+#' summary functions in R.
 #'
-#' na omit if functions, na check functions and na calculation functions.
+#' Most summary functions in R e.g. \code{mean} provide the option for the two
+#' extremes:
+#' \itemize{
+#' \item calculate the summary ignoring all missing values, \code{na.rm = TRUE}, or
 #'
-#' @section na omit functions:
-#' na omit if functions omit missing values in a vector if specified conditions are met.
-#' The general function is \code{na_omit_if} which allows for specify four type of missing value checks:
-#' (\code{prop}) a maximum proportion of missing values  allowed
-#' (\code{na}) a maximum number of missing values allowed
-#' (\code{consec}) a maximum number of consecutive missing values, and
-#' (\code{non_na}) a minimum number of non-missing values required.
+#' \item require no missing values for the summary to be calculated, \code{na.rm =
+#' FALSE}
+#' }
+#' In many applications something in between these two extremes is often
+#' appropriate. For example, you may wish to give a summary statistic if less
+#' than 10\% of values are missing.
 #'
+#' \code{naflex} provides helper functions to facilitate this flexibility for
+#' dealing with missing values.
+#'
+#' In particular \code{naflex} provides four types of missing value checks:
+#' \itemize{
+#' \item a maximum proportion of missing values allowed
+#' \item a maximum number of missing values allowed
+#' \item a maximum number of consecutive missing values allowed, and
+#' \item a minimum number of non-missing values required.
+#' }
 #' @docType package
 #' @name naflex
 NULL

@@ -32,7 +32,7 @@
 #'
 #' @return A vector of the same type as \code{x}. Either \code{x} with missing
 #'   values removed if all checks pass, or \code{x} unmodified if all checks do
-#'   not pass. For consistency with \code{stats::na.omit}, if missing
+#'   not pass. For consistency with \code{\link[stats:na.fail]{na.omit}}, if missing
 #'   values are removed, the indices of the removed values form an
 #'   \code{na.action} attribute of class \code{omit} in the result. If no
 #'   missing values are removed (because the checks failed or there were no missing values in \code{x}) then no \code{na.action} attribute is added.
