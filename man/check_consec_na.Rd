@@ -22,7 +22,7 @@ consecutive missing values is less than or equal to a given threshold. This
 is a convenient wrapper function for \code{consec_na(x) <= n}.
 }
 \examples{
-consec_na(c(1, NA, NA, NA, 2, NA, NA, 7), 4)
+check_consec_na(c(1, NA, NA, NA, 2, NA, NA, 7), 4)
 
-consec_na(c(rep(NA, 5), 1:2, rep(NA, 6)), 5)
+check_consec_na(c(rep(NA, 5), 1:2, rep(NA, 6)), 5)
 }

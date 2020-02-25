@@ -26,7 +26,7 @@ the threshold is for a minimum number, since it is concerned with
 \strong{non-missing} values.
 }
 \examples{
-n_non_na(c(1, 2, NA, 4, NA, NA, 7), 5)
+check_n_non_na(c(1, 2, NA, 4, NA, NA, 7), 5)
 
-n_non_na(c(1:9, NA, NA, NA), 2)
+check_n_non_na(c(1:9, NA, NA, NA), 2)
 }

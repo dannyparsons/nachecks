@@ -41,7 +41,7 @@ n_na <- function(x) sum(is.na(x))
 #' n_non_na(c(1:9, NA, NA))
 n_non_na <- function(x) sum(!is.na(x))
 
-#' Calculate the longest sequence of consecutive missing values
+#' Calculate the length of the longest sequence of consecutive missing values
 #'
 #' \code{consec_na} returns the length of the longest sequence of consecutive
 #' missing values in \code{x}.

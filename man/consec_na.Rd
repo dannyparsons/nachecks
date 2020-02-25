@@ -2,7 +2,7 @@
 % Please edit documentation in R/na_calculations.R
 \name{consec_na}
 \alias{consec_na}
-\title{Calculate the longest sequence of consecutive missing values}
+\title{Calculate the length of the longest sequence of consecutive missing values}
 \usage{
 consec_na(x)
 }
