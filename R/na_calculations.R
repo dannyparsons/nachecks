@@ -6,12 +6,14 @@
 #' @param x Vector to calculate the proportion of missing values in.
 #'
 #' @return The proportion (0 to 1) of missing values in \code{x}.
+#' @export
 #' @examples
 #' prop_na(c(1, 2, NA, 4))
 #'
 #' prop_na(c(1:9, NA))
 prop_na <- function(x) UseMethod("prop_na")
 
+#' @export
 prop_na.default <- function(x) mean(is.na(x))
 
 #' Calculate the number of missing values
@@ -22,12 +24,14 @@ prop_na.default <- function(x) mean(is.na(x))
 #' @param x Vector to calculate the number of missing values in.
 #'
 #' @return The number of missing values in \code{x}.
+#' @export
 #' @examples
 #' n_na(c(1, 2, NA, 4, NA, NA, 7))
 #'
 #' n_na(c(1:9, NA, NA))
 n_na <- function(x) UseMethod("n_na")
 
+#' @export
 n_na.default <- function(x) sum(is.na(x))
 
 #' Calculate the number of non-missing values
@@ -39,12 +43,14 @@ n_na.default <- function(x) sum(is.na(x))
 #' @param x Vector to calculate the number of \strong{non-missing} values in.
 #'
 #' @return The number of \strong{non-missing} values in \code{x}.
+#' @export
 #' @examples
 #' n_non_na(c(1, 2, NA, 4, NA, NA, 7))
 #'
 #' n_non_na(c(1:9, NA, NA))
 n_non_na <- function(x) UseMethod("n_non_na")
 
+#' @export
 n_non_na.default <- function(x) sum(!is.na(x))
 
 #' Calculate the length of the longest sequence of consecutive missing values
@@ -60,6 +66,7 @@ n_non_na.default <- function(x) sum(!is.na(x))
 #'
 #' @return The length of the longest sequence of consecutive missing values in
 #'   \code{x}.
+#' @export
 #' @examples
 #' consec_na(c(1, NA, NA, NA, 2, NA, NA, 7))
 #'
@@ -68,6 +75,7 @@ consec_na <- function(x) {
   UseMethod("consec_na")
 }
 
+#' @export
 consec_na.default <- function(x) {
   r <- rle(is.na(x))
   m <- r$lengths[r$values]

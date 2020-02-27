@@ -26,6 +26,7 @@
 #'   than (or strictly less than if \code{strict = TRUE}) \code{prop}, and
 #'   \code{FALSE} otherwise.
 #'
+#' @export
 #' @examples
 #' check_prop_na(c(1, 2, NA, 4), 0.6)
 #' check_prop_na(c(1, 2, NA, 4), 0.4)
@@ -37,6 +38,7 @@ check_prop_na <- function(x, prop, strict = FALSE) {
   UseMethod("check_prop_na")
 }
 
+#' @export
 check_prop_na.default <- function(x, prop, strict = FALSE) {
   if (missing(prop)) return(TRUE)
   if (strict) prop_na(x) < prop
@@ -55,6 +57,7 @@ check_prop_na.default <- function(x, prop, strict = FALSE) {
 #' @return \code{TRUE} if the number of missing values in \code{x}
 #' is less than or equal to \code{n} and \code{FALSE} otherwise.
 #'
+#' @export
 #' @examples
 #' check_n_na(c(1, 2, NA, 4, NA, NA, 7), 5)
 #'
@@ -63,6 +66,7 @@ check_n_na <- function(x, n) {
   UseMethod("check_n_na")
 }
 
+#' @export
 check_n_na.default <- function(x, n) {
   if (missing(n)) return(TRUE)
   n_na(x) <= n
@@ -84,6 +88,7 @@ check_n_na.default <- function(x, n) {
 #' @return \code{TRUE} if the number of \strong{non-missing} values in \code{x}
 #'   is greater than or equal to \code{n} and \code{FALSE} otherwise.
 #'
+#' @export
 #' @examples
 #' check_n_non_na(c(1, 2, NA, 4, NA, NA, 7), 5)
 #'
@@ -92,6 +97,7 @@ check_n_non_na <- function(x, n) {
   UseMethod("check_n_non_na")
 }
 
+#' @export
 check_n_non_na.default <- function(x, n) {
   if (missing(n)) return(TRUE)
   n_non_na(x) >= n
@@ -110,6 +116,7 @@ check_n_non_na.default <- function(x, n) {
 #' @return \code{TRUE} if the longest sequence of consecutive missing values in
 #'   \code{x} is less than or equal to \code{n} and \code{FALSE} otherwise.
 #'
+#' @export
 #' @examples
 #' check_consec_na(c(1, NA, NA, NA, 2, NA, NA, 7), 4)
 #'
@@ -118,6 +125,7 @@ check_consec_na <- function(x, n) {
   UseMethod("check_consec_na")
 }
 
+#' @export
 check_consec_na.default <- function(x, n) {
   if (missing(n)) return(TRUE)
   consec_na(x) <= n
@@ -155,6 +163,7 @@ check_consec_na.default <- function(x, n) {
 #'   FALSE}). Ignored if \code{prop_na} is missing.
 #'
 #' @return \code{TRUE} if all specified checks pass, and \code{FALSE} otherwise.
+#' @export
 #' @examples
 #' x <- c(1:3, NA, NA, NA, 4, NA, NA, 3)
 #' # check if no more than 50% of values are missing
@@ -166,7 +175,8 @@ check_na <- function(x, prop, na, consec, non_na,
   UseMethod("check_na")
 }
 
-check_na <- function(x, prop, na, consec, non_na,
+#' @export
+check_na.default <- function(x, prop, na, consec, non_na,
                      prop_strict = FALSE) {
   is_prop <- !missing(prop)
   is_na <- !missing(na)
