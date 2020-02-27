@@ -10,7 +10,9 @@
 #' prop_na(c(1, 2, NA, 4))
 #'
 #' prop_na(c(1:9, NA))
-prop_na <- function(x) mean(is.na(x))
+prop_na <- function(x) UseMethod("prop_na")
+
+prop_na.default <- function(x) mean(is.na(x))
 
 #' Calculate the number of missing values
 #'
@@ -24,7 +26,9 @@ prop_na <- function(x) mean(is.na(x))
 #' n_na(c(1, 2, NA, 4, NA, NA, 7))
 #'
 #' n_na(c(1:9, NA, NA))
-n_na <- function(x) sum(is.na(x))
+n_na <- function(x) UseMethod("n_na")
+
+n_na.default <- function(x) sum(is.na(x))
 
 #' Calculate the number of non-missing values
 #'
@@ -39,7 +43,9 @@ n_na <- function(x) sum(is.na(x))
 #' n_non_na(c(1, 2, NA, 4, NA, NA, 7))
 #'
 #' n_non_na(c(1:9, NA, NA))
-n_non_na <- function(x) sum(!is.na(x))
+n_non_na <- function(x) UseMethod("n_non_na")
+
+n_non_na.default <- function(x) sum(!is.na(x))
 
 #' Calculate the length of the longest sequence of consecutive missing values
 #'
@@ -59,6 +65,10 @@ n_non_na <- function(x) sum(!is.na(x))
 #'
 #' consec_na(c(rep(NA, 5), 1:2, rep(NA, 6)))
 consec_na <- function(x) {
+  UseMethod("consec_na")
+}
+
+consec_na.default <- function(x) {
   r <- rle(is.na(x))
   m <- r$lengths[r$values]
   if (length(m) > 0) max(m) else 0

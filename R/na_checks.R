@@ -34,6 +34,10 @@
 #'
 #' check_prop_na(c(1:9, NA), 0.1, strict = TRUE)
 check_prop_na <- function(x, prop, strict = FALSE) {
+  UseMethod("check_prop_na")
+}
+
+check_prop_na.default <- function(x, prop, strict = FALSE) {
   if (missing(prop)) return(TRUE)
   if (strict) prop_na(x) < prop
   else prop_na(x) <= prop
@@ -56,6 +60,10 @@ check_prop_na <- function(x, prop, strict = FALSE) {
 #'
 #' check_n_na(c(1:9, NA, NA, NA), 2)
 check_n_na <- function(x, n) {
+  UseMethod("check_n_na")
+}
+
+check_n_na.default <- function(x, n) {
   if (missing(n)) return(TRUE)
   n_na(x) <= n
 }
@@ -81,6 +89,10 @@ check_n_na <- function(x, n) {
 #'
 #' check_n_non_na(c(1:9, NA, NA, NA), 2)
 check_n_non_na <- function(x, n) {
+  UseMethod("check_n_non_na")
+}
+
+check_n_non_na.default <- function(x, n) {
   if (missing(n)) return(TRUE)
   n_non_na(x) >= n
 }
@@ -103,6 +115,10 @@ check_n_non_na <- function(x, n) {
 #'
 #' check_consec_na(c(rep(NA, 5), 1:2, rep(NA, 6)), 5)
 check_consec_na <- function(x, n) {
+  UseMethod("check_consec_na")
+}
+
+check_consec_na.default <- function(x, n) {
   if (missing(n)) return(TRUE)
   consec_na(x) <= n
 }
@@ -145,6 +161,11 @@ check_consec_na <- function(x, n) {
 #' check_na(x, prop = 0.5)
 #' # check if no more than 50% of values are missing and there are no more than 2 consecutive missing values.
 #' check_na(x, prop = 0.5, consec = 2)
+check_na <- function(x, prop, na, consec, non_na,
+                     prop_strict = FALSE) {
+  UseMethod("check_na")
+}
+
 check_na <- function(x, prop, na, consec, non_na,
                      prop_strict = FALSE) {
   is_prop <- !missing(prop)

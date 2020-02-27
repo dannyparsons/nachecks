@@ -50,42 +50,53 @@
 #' sum(daily_rain %>% na_omit_if(na = 10, consec = 4))
 na_omit_if <- function(x, prop, na, consec, non_na,
                        prop_strict = FALSE) {
+  UseMethod("na_omit_if")
+}
+
+na_omit_if.default <- function(x, prop, na, consec, non_na,
+                       prop_strict = FALSE) {
   if (check_na(x = x, prop = prop, na = na, consec = consec,
                non_na = non_na, prop_strict = prop_strict)) {
-    label_na_omit(x)
+    na.omit(x)
   } else x
 }
 
 na_omit_if_prop <- function(x, prop, strict = FALSE) {
+  UseMethod("na_omit_if_prop")
+}
+
+na_omit_if_prop.default <- function(x, prop, strict = FALSE) {
   if (check_prop_na(x = x, prop = prop, strict = strict)) {
-    label_na_omit(x)
+    na.omit(x)
   } else x
 }
 
 na_omit_if_n <- function(x, n) {
+  UseMethod("na_omit_if_n")
+}
+
+na_omit_if_n.default <- function(x, n) {
   if (check_n_na(x = x, n = n)) {
-    label_na_omit(x)
+    na.omit(x)
   } else x
 }
 
 na_omit_if_non_na <- function(x, n) {
+  UseMethod("na_omit_if_non_na")
+}
+
+na_omit_if_non_na.default <- function(x, n) {
   if (check_n_non_na(x = x, n = n)) {
-    label_na_omit(x)
+    na.omit(x)
   } else x
 }
 
 na_omit_if_consec <- function(x, n) {
-  if (check_consec_na(x = x, n = n)) {
-    label_na_omit(x)
-  } else x
+  UseMethod("na_omit_if_consec")
 }
 
-label_na_omit <- function(x) {
-  omit <- which(is.na(x))
-  if(length(omit) > 0) {
-    x <- x[-omit]
-    attr(omit, "class") <- "omit"
-    attr(x, "na.action") <- omit
-  }
-  x
+na_omit_if_consec.default <- function(x, n) {
+  if (check_consec_na(x = x, n = n)) {
+    na.omit(x)
+  } else x
 }
