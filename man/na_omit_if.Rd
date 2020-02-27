@@ -25,7 +25,7 @@ be less than or equal to \code{consec} for this check to pass.}
 number of non-missing values in \code{x} must be greater than or equal to
 \code{non_na} for this check to pass.}
 
-\item{strict}{A logical (default \code{FALSE}) indicating if the proportion
+\item{prop_strict}{A logical (default \code{FALSE}) indicating if the proportion
 of missing values must be \strong{strictly} less than \code{prop}
 (\code{strict = TRUE}) or only less than or equal to \code{prop_na}
 (\code{strict = FALSE}). Ignored if \code{prop_na} is missing.}

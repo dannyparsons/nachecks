@@ -25,10 +25,10 @@ be less than or equal to \code{consec} for this check to pass.}
 number of non-missing values in \code{x} must be greater than or equal to
 \code{non_na} for this check to pass.}
 
-\item{strict}{A logical (default \code{FALSE}) indicating if the proportion
-of missing values must be \strong{strictly} less than \code{prop}
-(\code{strict = TRUE}) or only less than \code{prop_na} (\code{strict =
-FALSE}). Ignored if \code{prop_na} is missing.}
+\item{prop_strict}{A logical (default \code{FALSE}) indicating if the
+proportion of missing values must be \strong{strictly} less than
+\code{prop} (\code{strict = TRUE}) or only less than \code{prop_na}
+(\code{strict = FALSE}). Ignored if \code{prop_na} is missing.}
 }
 \value{
 \code{TRUE} if all specified checks pass, and \code{FALSE} otherwise.
@@ -50,6 +50,7 @@ satisfied to return \code{TRUE}.
 x <- c(1:3, NA, NA, NA, 4, NA, NA, 3)
 # check if no more than 50\% of values are missing
 check_na(x, prop = 0.5)
-# check if no more than 50\% of values are missing and there are no more than 2 consecutive missing values.
+# check if no more than 50\% of values are missing
+# and there are no more than 2 consecutive missing values.
 check_na(x, prop = 0.5, consec = 2)
 }
