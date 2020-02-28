@@ -8,7 +8,7 @@ Most summary functions in R e.g. `mean`, provide the option for the two extremes
 - calculate the summary ignoring all missing values, `na.rm = TRUE`, or
 - require no missing values for the summary to be calculated, `na.rm = FALSE`
 
-In many applications something in between these two extremes is often appropriate. For example, you may wish to give a summary statistic if less than `10%` of values are missing. The World Meteorological Organization (WMO) Guidelines on the Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> recommends that a monthly mean value calculated from daily values should be calculated as long as there are no more than `11` missing values and no more than `4` consecutive missing values in the month.
+In many applications something in between these two extremes is often appropriate. For example, you may wish to give a summary statistic if less than `10%` of values are missing. The World Meteorological Organization (WMO) Guidelines on the Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> recommends that a monthly mean value calculated from daily values should be calculated as long as there are no more than `10` missing values and no more than `4` consecutive missing values in the month.
 
 `naflex` provides helper functions to facilitate this flexibility for dealing with missing values.
 
