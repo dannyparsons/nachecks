@@ -19,4 +19,4 @@ In particular `naflex` provides four types of missing value checks:
 - a minimum number of non-missing values required.
 
 # References
-<sup id="f1">1</sup> https://library.wmo.int/index.php?lvl=notice_display&id=20130#.XljKS84zZnI[↩](#a1)
+<sup id="f1">1</sup> https://library.wmo.int/index.php?lvl=notice_display&id=20130#.XljKS84zZnI [↩](#a1)
