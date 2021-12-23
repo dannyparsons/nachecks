@@ -18,18 +18,16 @@ na_check_non_na(x, n_non = NULL)
 \arguments{
 \item{x}{Vector to check the missing value properties of.}
 
-\item{prop}{The threshold as a proportion (0 to 1) for missing values in
-\code{x}.}
+\item{prop}{The maximum proportion (0 to 1) of missing values allowed.}
 
 \item{strict}{A logical (default \code{FALSE}) indicating if the proportion
 of missing values must be \strong{strictly} less than \code{prop}
 (\code{strict = TRUE}) or only less than \code{na_prop} (\code{strict =
 FALSE}).}
 
-\item{n}{The threshold for missing values in \code{x}.}
+\item{n}{The maximum number of missing values allowed.}
 
-\item{consec}{The threshold for the longest sequence of consecutive missing values
-in \code{x}.}
+\item{consec}{The maximum number of consecutive missing values allowed.}
 
 \item{n_non}{The threshold for \strong{non-missing} values in \code{x}.}
 }

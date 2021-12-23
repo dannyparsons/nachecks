@@ -5,7 +5,7 @@
 \alias{naflex}
 \title{naflex: Flexible missing value checks and omit functions.}
 \description{
-The \code{naflex} package provides additional flexibility for dealing with
+The \code{naflex} package provides additional flexibility for handling
 missing values in summary functions beyond the two extreme options (\code{na.rm = TRUE/FALSE})
 available in base R.
 }
