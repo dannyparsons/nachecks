@@ -5,7 +5,8 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/dannyparsons/naflex/workflows/R-CMD-check/badge.svg)](https://github.com/dannyparsons/naflex/actions)
+[![R-CMD-check](https://github.com/dannyparsons/naflex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dannyparsons/naflex/actions/workflows/R-CMD-check.yaml)
+[![codecov](https://codecov.io/gh/dannyparsons/naflex/branch/master/graph/badge.svg?token=MSQKXE5UYR)](https://codecov.io/gh/dannyparsons/naflex)
 <!-- badges: end -->
 
 The `naflex` R package provides greater flexibility for dealing with
