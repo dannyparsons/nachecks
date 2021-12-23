@@ -39,4 +39,5 @@ test_that("max number of consecutive NA is correct", {
   expect_equal(na_consec(y), 2)
   expect_equal(na_consec(z), 2)
   expect_equal(na_consec(w), 0)
+  expect_equal(na_consec(numeric(0)), 0)
 })

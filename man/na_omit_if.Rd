@@ -4,7 +4,7 @@
 \alias{na_omit_if}
 \title{Conditionally omit missing values}
 \usage{
-na_omit_if(x, prop, na, consec, na_non_na, prop_strict = FALSE)
+na_omit_if(x, prop, n, consec, n_non, prop_strict = FALSE)
 }
 \arguments{
 \item{x}{Vector to omit missing values in if checks pass.}
@@ -14,17 +14,17 @@ The proportion of missing values in \code{x} must be less than (or equal
 to) \code{prop} for this check to pass, or strictly less than \code{prop}
 if \code{strict = TRUE}.}
 
-\item{na}{The threshold for the number of missing values in \code{x}. The
-number of missing values in \code{x} must be less than or equal to \code{na} for this
+\item{n}{The threshold for the number of missing values in \code{x}. The
+number of missing values in \code{x} must be less than or equal to \code{n} for this
 check to pass.}
 
 \item{consec}{The threshold for the longest sequence of consecutive missing
 values in \code{x}. The longest sequence of consecutive missing values in \code{x} must
 be less than or equal to \code{consec} for this check to pass.}
 
-\item{na_non_na}{The threshold for \strong{non-missing} values in \code{x}. The
+\item{n_non}{The threshold for \strong{non-missing} values in \code{x}. The
 number of non-missing values in \code{x} must be greater than or equal to
-\code{na_non_na} for this check to pass.}
+\code{n_non} for this check to pass.}
 
 \item{prop_strict}{A logical (default \code{FALSE}) indicating if the proportion
 of missing values must be \strong{strictly} less than \code{prop}
@@ -36,7 +36,7 @@ A vector of the same type as \code{x}. Either \code{x} with missing
   values removed if all checks pass, or \code{x} unmodified if any checks
   fail.
 
-  For consistency with \code{\link[stats::na.fail]{na.omit}}, if missing
+  For consistency with \code{\link[stats]{na.omit}}, if missing
   values are removed, the indices of the removed values form an
   \code{na.action} attribute of class \code{omit} in the result.
 
@@ -67,7 +67,7 @@ this is considered as "all" checks passing. This is equivalent to \code{na.rm
 \examples{
 x <- c(1, 3, NA, NA, NA, 4, 2, NA, 4, 6)
 
-sum(na_omit_if(x, prop = 0.45, na = 10, consec = 5))
+sum(na_omit_if(x, prop = 0.45, n = 10, consec = 5))
 sum(na_omit_if(x, prop = 0.45))
 
 require(magrittr)
@@ -76,5 +76,5 @@ sum(x \%>\% na_omit_if(prop = 0.45))
 # WMO specification for calculating monthly values from daily data
 daily_rain <- rnorm(30)
 daily_rain[c(3, 5, 6, 7, 8, 9, 24, 28)] <- NA
-sum(daily_rain \%>\% na_omit_if(na = 10, consec = 4))
+sum(daily_rain \%>\% na_omit_if(n = 10, consec = 4))
 }

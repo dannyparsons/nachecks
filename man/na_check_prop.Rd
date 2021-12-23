@@ -2,12 +2,21 @@
 % Please edit documentation in R/na_check-individuals.R
 \name{na_check_prop}
 \alias{na_check_prop}
+\alias{na_check_n}
+\alias{na_check_consec}
+\alias{na_check_non_na}
 \title{Check the proportion of missing values}
 \usage{
 na_check_prop(x, prop = NULL, strict = FALSE)
+
+na_check_n(x, n = NULL)
+
+na_check_consec(x, consec = NULL)
+
+na_check_non_na(x, n_non = NULL)
 }
 \arguments{
-\item{x}{Vector to check the proportion of missing values in.}
+\item{x}{Vector to check the missing value properties of.}
 
 \item{prop}{The threshold as a proportion (0 to 1) for missing values in
 \code{x}.}
@@ -16,11 +25,29 @@ na_check_prop(x, prop = NULL, strict = FALSE)
 of missing values must be \strong{strictly} less than \code{prop}
 (\code{strict = TRUE}) or only less than \code{na_prop} (\code{strict =
 FALSE}).}
+
+\item{n}{The threshold for missing values in \code{x}.}
+
+\item{consec}{The threshold for the longest sequence of consecutive missing values
+in \code{x}.}
+
+\item{n_non}{The threshold for \strong{non-missing} values in \code{x}.}
 }
 \value{
+\code{TRUE} if the check passes, and \code{FALSE} otherwise.
+
 \code{TRUE} if the proportion of missing values in \code{x} is less
   than (or strictly less than if \code{strict = TRUE}) \code{prop}, and
   \code{FALSE} otherwise.
+
+\code{TRUE} if the number of missing values in \code{x}
+is less than or equal to \code{n} and \code{FALSE} otherwise.
+
+\code{TRUE} if the longest sequence of consecutive missing values in
+  \code{x} is less than or equal to \code{n} and \code{FALSE} otherwise.
+
+\code{TRUE} if the number of \strong{non-missing} values in \code{x}
+  is greater than or equal to \code{n} and \code{FALSE} otherwise.
 }
 \description{
 \code{na_check_prop} returns \code{TRUE} if the proportion of missing values
@@ -29,6 +56,22 @@ is below a given threshold. This is a convenient wrapper function for
 \code{strict}).
 }
 \details{
+\code{na_check_n} returns \code{TRUE} if the number of
+missing values is less than or equal to a given threshold.
+This is a convenient wrapper function for \code{na_n(x) <= n}.
+
+\code{na_check_consec} returns \code{TRUE} if the longest sequence of
+consecutive missing values is less than or equal to a given threshold. This
+is a convenient wrapper function for \code{na_consec(x) <= n}.
+
+\code{na_check_non_na} returns \code{TRUE} if the number of
+\strong{non-missing} values is greater than or equal to a given threshold.
+This is a convenient wrapper function for \code{na_non_na(x) >= n}.
+
+Note that unlike the other \code{check_*} functions in \code{na_check_non_na}
+the threshold is for a minimum number, since it is concerned with
+\strong{non-missing} values.
+
 If \code{strict = FALSE} (the default), \code{na_check_prop} is equivalent to
 \code{na_prop(x) <= prop} i.e. it returns \code{TRUE} if the proportion of
 missing values in \code{x} is less than or equal to \code{na_prop}, and
@@ -40,9 +83,22 @@ If \code{strict = TRUE}, \code{na_check_prop} is equivalent to
 }
 \examples{
 na_check_prop(c(1, 2, NA, 4), 0.6)
+
 na_check_prop(c(1, 2, NA, 4), 0.4)
 
 na_check_prop(c(1:10, NA), 0.1)
 
 na_check_prop(c(1:9, NA), 0.1, strict = TRUE)
+
+na_check_n(c(1, 2, NA, 4, NA, NA, 7), 5)
+
+na_check_n(c(1:9, NA, NA, NA), 2)
+
+na_check_consec(c(1, NA, NA, NA, 2, NA, NA, 7), 4)
+
+na_check_consec(c(rep(NA, 5), 1:2, rep(NA, 6)), 5)
+
+na_check_non_na(c(1, 2, NA, 4, NA, NA, 7), 5)
+
+na_check_non_na(c(1:9, NA, NA, NA), 2)
 }

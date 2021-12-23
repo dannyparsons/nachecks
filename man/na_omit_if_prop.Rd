@@ -11,9 +11,9 @@ na_omit_if_prop(x, prop, strict = FALSE)
 
 na_omit_if_n(x, n)
 
-na_omit_if_consec(x, n)
+na_omit_if_consec(x, consec)
 
-na_omit_if_non_na(x, n)
+na_omit_if_non_na(x, n_non)
 }
 \arguments{
 \item{x}{Vector to omit missing values in if checks pass.}
@@ -25,20 +25,20 @@ if \code{strict = TRUE}.}
 
 \item{strict}{A logical (default \code{FALSE}) indicating if the proportion
 of missing values must be \strong{strictly} less than \code{prop}
-(\code{strict = TRUE}) or only less than or equal to \code{na_prop}
+(\code{strict = TRUE}) or only less than or equal to \code{prop}
 (\code{strict = FALSE}).}
 
-\item{na}{The threshold for the number of missing values in \code{x}. The
-number of missing values in \code{x} must be less than or equal to \code{na} for this
+\item{n}{The threshold for the number of missing values in \code{x}. The
+number of missing values in \code{x} must be less than or equal to \code{n} for this
 check to pass.}
 
 \item{consec}{The threshold for the longest sequence of consecutive missing
 values in \code{x}. The longest sequence of consecutive missing values in \code{x} must
 be less than or equal to \code{consec} for this check to pass.}
 
-\item{na_non_na}{The threshold for \strong{non-missing} values in \code{x}. The
+\item{n_non}{The threshold for \strong{non-missing} values in \code{x}. The
 number of non-missing values in \code{x} must be greater than or equal to
-\code{na_non_na} for this check to pass.}
+\code{n_non} for this check to pass.}
 }
 \description{
 These set of functions remove missing values from \code{x} if the single,

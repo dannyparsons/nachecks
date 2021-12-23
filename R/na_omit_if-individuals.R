@@ -19,18 +19,18 @@
 #'   The proportion of missing values in \code{x} must be less than (or equal
 #'   to) \code{prop} for this check to pass, or strictly less than \code{prop}
 #'   if \code{strict = TRUE}.
-#' @param na The threshold for the number of missing values in \code{x}. The
-#'   number of missing values in \code{x} must be less than or equal to \code{na} for this
+#' @param n The threshold for the number of missing values in \code{x}. The
+#'   number of missing values in \code{x} must be less than or equal to \code{n} for this
 #'   check to pass.
 #' @param consec The threshold for the longest sequence of consecutive missing
 #'   values in \code{x}. The longest sequence of consecutive missing values in \code{x} must
 #'   be less than or equal to \code{consec} for this check to pass.
-#' @param na_non_na The threshold for \strong{non-missing} values in \code{x}. The
+#' @param n_non The threshold for \strong{non-missing} values in \code{x}. The
 #'   number of non-missing values in \code{x} must be greater than or equal to
-#'   \code{na_non_na} for this check to pass.
+#'   \code{n_non} for this check to pass.
 #' @param strict A logical (default \code{FALSE}) indicating if the proportion
 #'   of missing values must be \strong{strictly} less than \code{prop}
-#'   (\code{strict = TRUE}) or only less than or equal to \code{na_prop}
+#'   (\code{strict = TRUE}) or only less than or equal to \code{prop}
 #'   (\code{strict = FALSE}).
 #'
 #' @export

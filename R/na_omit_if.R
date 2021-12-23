@@ -29,7 +29,7 @@
 #'   values removed if all checks pass, or \code{x} unmodified if any checks
 #'   fail.
 #'
-#'   For consistency with \code{\link[stats::na.fail]{na.omit}}, if missing
+#'   For consistency with \code{\link[stats]{na.omit}}, if missing
 #'   values are removed, the indices of the removed values form an
 #'   \code{na.action} attribute of class \code{omit} in the result.
 #'
@@ -40,7 +40,7 @@
 #' @examples
 #' x <- c(1, 3, NA, NA, NA, 4, 2, NA, 4, 6)
 #'
-#' sum(na_omit_if(x, prop = 0.45, na = 10, consec = 5))
+#' sum(na_omit_if(x, prop = 0.45, n = 10, consec = 5))
 #' sum(na_omit_if(x, prop = 0.45))
 #'
 #' require(magrittr)
@@ -49,7 +49,7 @@
 #' # WMO specification for calculating monthly values from daily data
 #' daily_rain <- rnorm(30)
 #' daily_rain[c(3, 5, 6, 7, 8, 9, 24, 28)] <- NA
-#' sum(daily_rain %>% na_omit_if(na = 10, consec = 4))
+#' sum(daily_rain %>% na_omit_if(n = 10, consec = 4))
 na_omit_if <- function(x, prop, n, consec, n_non,
                        prop_strict = FALSE) {
   UseMethod("na_omit_if")
