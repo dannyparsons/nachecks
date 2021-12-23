@@ -36,7 +36,7 @@
 #' # check if no more than 50% of values are missing
 #' na_check(x, prop = 0.5)
 #' # check if no more than 50% of values are missing
-#' # and there are no more than 2 consecutive missing values.
+#' # and if there are no more than 2 consecutive missing values.
 #' na_check(x, prop = 0.5, consec = 2)
 na_check <- function(x, prop = NULL, n = NULL, consec = NULL, n_non = NULL,
                      prop_strict = FALSE) {
