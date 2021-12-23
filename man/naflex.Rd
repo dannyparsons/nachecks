@@ -5,9 +5,9 @@
 \alias{naflex}
 \title{naflex: Flexible missing value checks and omit functions.}
 \description{
-The \code{naflex} package provides greater flexibility for dealing with
-missing values than the \code{na.rm = TRUE/FALSE} option available in most
-summary functions in R.
+The \code{naflex} package provides additional flexibility for dealing with
+missing values in summary functions beyond the two extreme options (\code{na.rm = TRUE/FALSE})
+available in base R.
 }
 \details{
 Most summary functions in R e.g. \code{mean} provide the option for the two
@@ -20,10 +20,10 @@ FALSE}
 }
 In many applications something in between these two extremes is often
 appropriate. For example, you may wish to give a summary statistic if less
-than 10\% of values are missing.
+than 5\% of values are missing.
 
 \code{naflex} provides helper functions to facilitate this flexibility for
-dealing with missing values.
+dealing with missing values, particularly within summary functions.
 
 In particular \code{naflex} provides four types of missing value checks:
 \itemize{
@@ -32,4 +32,7 @@ In particular \code{naflex} provides four types of missing value checks:
 \item a maximum number of consecutive missing values allowed, and
 \item a minimum number of non-missing values required.
 }
+
+These checks can be used individually or in combination with each other
+within summary functions.
 }
