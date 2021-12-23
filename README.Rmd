@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 # naflex: Flexible options for missing values
 
 <!-- badges: start -->
-[![Travis Build Status](https://travis-ci.org/dannyparsons/naflex.svg?branch=master)](https://travis-ci.org/dannyparsons/naflex)
+[![R-CMD-check](https://github.com/dannyparsons/naflex/workflows/R-CMD-check/badge.svg)](https://github.com/dannyparsons/naflex/actions)
 <!-- badges: end -->
 
 The `naflex` R package provides greater flexibility for dealing with missing values than the `na.rm = TRUE/FALSE` option available in most summary functions in R.

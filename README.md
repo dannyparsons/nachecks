@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![Travis Build
-Status](https://travis-ci.org/dannyparsons/naflex.svg?branch=master)](https://travis-ci.org/dannyparsons/naflex)
+[![R-CMD-check](https://github.com/dannyparsons/naflex/workflows/R-CMD-check/badge.svg)](https://github.com/dannyparsons/naflex/actions)
 <!-- badges: end -->
 
 The `naflex` R package provides greater flexibility for dealing with
@@ -14,9 +13,9 @@ missing values than the `na.rm = TRUE/FALSE` option available in most
 summary functions in R.
 
 Most summary functions in R e.g. `mean`, provide the option for the two
-extremes: - calculate the summary ignoring all missing values, `na.rm =
-TRUE`, or - require no missing values for the summary to be calculated,
-`na.rm = FALSE`
+extremes: - calculate the summary ignoring all missing values,
+`na.rm = TRUE`, or - require no missing values for the summary to be
+calculated, `na.rm = FALSE`
 
 In many applications something in between these two extremes is often
 appropriate. For example, you may wish to give a summary statistic if
