@@ -7,6 +7,8 @@
 
 [![R-CMD-check](https://github.com/dannyparsons/naflex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dannyparsons/naflex/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/dannyparsons/naflex/branch/master/graph/badge.svg?token=MSQKXE5UYR)](https://codecov.io/gh/dannyparsons/naflex)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/naflex)](https://cran.r-project.org/package=naflex)
+[![license](https://img.shields.io/badge/license-LGPL%20(%3E=%203)-lightgrey.svg)](https://choosealicense.com/)
 <!-- badges: end -->
 
 The `naflex` R package provides additional flexibility for handling
