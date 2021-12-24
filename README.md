@@ -44,9 +44,100 @@ devtools::install_github("dannyparsons/naflex")
 
 ## Usage
 
-The main function in `naflex` is `na_omit_if`. When wrapped around a
-vector inside a summary function, it ensures the summary function
-returns
+The main function in `naflex` is `na_omit_if`.
+
+When wrapped around a vector in a summary function, `na_omit_if` ensures
+that the summary value is calculated when the checks pass, and returns
+`NA` if not. The example below shows how to calculate the `mean`
+conditionally on the proportion of missing values.
+
+``` r
+library(naflex)
+
+x <- c(1, 3, NA, NA, 3, 2, NA, 5, 8, 7)
+
+# Calculate if 4 or less missing values
+mean(na_omit_if(x, prop = 0.3))
+#> [1] 4.142857
+# Calculate if 2 or less missing values
+mean(na_omit_if(x, prop = 0.2))
+#> [1] NA
+```
+
+Four types of checks are available:
+
+-   `prop`: the maximum proportion (0 to 1) of missing values allowed
+-   `n`: the maximum number of missing values allowed
+-   `consec`: the maximum number of consecutive missing values allowed,
+    and
+-   `n_non`: the minimum number of non-missing values **required**.
+
+If multiple checks are specified, all checks must pass for missing
+values to be removed. For example, the code below returns `NA`. Although
+there are less than 4 missing values in `x`, there are two consecutive
+missing values, hence the `consec = 1` check fails.
+
+``` r
+mean(na_omit_if(x, n = 4, consec = 1))
+#> [1] NA
+```
+
+Note that you cannot use this option with `na.rm = TRUE` in the summary
+function since this will always remove missing values so the checks are
+essentially ignored.
+
+## Details & How `naflex` works
+
+`na_omit_if` works by removing the missing values from `x` if the checks
+pass, and leaving `x` unmodified otherwise.
+
+``` r
+# Missing values removed
+na_omit_if(x, n = 4)
+#> [1] 1 3 3 2 5 8 7
+#> attr(,"na.action")
+#> [1] 3 4 7
+#> attr(,"class")
+#> [1] "omit"
+```
+
+If missing values are removed, an `na.action` attribute and `omit` class
+is added for consistency with `stats::na.omit`.
+
+``` r
+# Missing values not removed
+na_omit_if(x, n = 2)
+#>  [1]  1  3 NA NA  3  2 NA  5  8  7
+```
+
+A set of four `na_omit_if_*` functions are provided for doing the same
+thing restricted to a single check e.g. `na_omit_if_n(x, 2)`
+
+`na_check` has the same parameters as `na_omit_if` but returns a logical
+indicating whether the checks pass. It is used internally in
+`na_omit_if` but may also be a useful helper function.
+
+``` r
+if (na_check(x, n = 4, consec = 1)) print("NA checks pass") else ("NA checks fail")
+#> [1] "NA checks fail"
+```
+
+A set a four `na_check_*` functions are also provided for doing the same
+thing restricted to a single check e.g. `na_check_prop(x, 0.2)`
+
+Finally, `naflex` provides a set of helper functions for calculating
+missing value properties used in these checks.
+
+``` r
+na_prop(x)
+#> [1] 0.3
+na_n(x)
+#> [1] 3
+na_consec(x)
+#> [1] 2
+na_non_na(x)
+#> [1] 7
+```
 
 ## Compared to base R
 
