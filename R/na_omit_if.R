@@ -1,29 +1,26 @@
 #' Conditionally omit missing values
 #'
-#' \code{na_omit_if} removes missing values from \code{x} if the specified checks
-#' are satisfied, and returns \code{x} unmodified otherwise. When used within
-#' summary functions, \code{na_omit_if} provides greater flexibility than
+#' \code{na_omit_if} removes missing values from \code{x} if the specified
+#' checks are satisfied, and returns \code{x} unmodified otherwise. When used
+#' within summary functions, \code{na_omit_if} provides greater flexibility than
 #' the \code{na.rm} option e.g. \code{sum(na_omit_if(x, prop = 0.05))}.
 #'
 #' There are four type of checks available:
 #' \itemize{
 #' \item a maximum proportion of missing values allowed (\code{prop})
-#' \item a maximum number of missing values allowed (\code{na})
-#' \item a maximum number of consecutive missing values allowed (\code{consec}), and
-#' \item a minimum number of non-missing values required (\code{na_non_na}).
+#' \item a maximum number of missing values allowed (\code{n})
+#' \item a maximum number of consecutive missing values allowed (\code{consec}),
+#' and
+#' \item a minimum number of non-missing values required (\code{n_non}).
 #' }
 #'
 #' Any number of checks may be specified, including none. If multiple checks are
-#' specified, they must all be satisfied in order for missing values to be
+#' specified, they must all pass in order for missing values to be
 #' omitted. If no checks are specified then missing values are omitted, since
-#' this is considered as "all" checks passing. This is equivalent to \code{na.rm
-#' = TRUE}.
+#' this is considered as "all" checks passing.
 #'
 #' @inheritParams na_omit_if_prop
-#' @param prop_strict A logical (default \code{FALSE}) indicating if the proportion
-#'   of missing values must be \strong{strictly} less than \code{prop}
-#'   (\code{strict = TRUE}) or only less than or equal to \code{na_prop}
-#'   (\code{strict = FALSE}). Ignored if \code{na_prop} is missing.
+#' @inheritParams na_check
 #'
 #' @return A vector of the same type as \code{x}. Either \code{x} with missing
 #'   values removed if all checks pass, or \code{x} unmodified if any checks
@@ -33,7 +30,7 @@
 #'   values are removed, the indices of the removed values form an
 #'   \code{na.action} attribute of class \code{omit} in the result.
 #'
-#'   If no missing values are removed (because the checks failed or there were
+#'   If missing values are not removed (because the checks failed or there were
 #'   no missing values in \code{x}) then no \code{na.action} attribute is added.
 #'
 #' @export
@@ -56,8 +53,8 @@ na_omit_if <- function(x, prop, n, consec, n_non,
 }
 
 #' @export
-na_omit_if.default <- function(x, prop = NULL, n = NULL, consec = NULL, n_non = NULL,
-                       prop_strict = FALSE) {
+na_omit_if.default <- function(x, prop = NULL, n = NULL, consec = NULL,
+                               n_non = NULL, prop_strict = FALSE) {
   if (na_check(x = x, prop = prop, n = n, consec = consec,
                n_non = n_non, prop_strict = prop_strict)) {
     stats::na.omit(x)

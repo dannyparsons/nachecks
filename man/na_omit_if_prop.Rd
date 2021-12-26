@@ -18,27 +18,30 @@ na_omit_if_non_na(x, n_non)
 \arguments{
 \item{x}{Vector to omit missing values in if checks pass.}
 
-\item{prop}{The proportion threshold (0 to 1) for missing values in \code{x}.
-The proportion of missing values in \code{x} must be less than (or equal
-to) \code{prop} for this check to pass, or strictly less than \code{prop}
-if \code{strict = TRUE}.}
+\item{prop}{The maximum proportion (0 to 1) of missing values allowed.}
 
 \item{strict}{A logical (default \code{FALSE}) indicating if the proportion
 of missing values must be \strong{strictly} less than \code{prop}
-(\code{strict = TRUE}) or only less than or equal to \code{prop}
-(\code{strict = FALSE}).}
+(\code{strict = TRUE}) or only less than \code{prop} (\code{strict =
+FALSE}).}
 
-\item{n}{The threshold for the number of missing values in \code{x}. The
-number of missing values in \code{x} must be less than or equal to \code{n} for this
-check to pass.}
+\item{n}{The maximum number of missing values allowed.}
 
-\item{consec}{The threshold for the longest sequence of consecutive missing
-values in \code{x}. The longest sequence of consecutive missing values in \code{x} must
-be less than or equal to \code{consec} for this check to pass.}
+\item{consec}{The maximum number of consecutive missing values allowed.}
 
-\item{n_non}{The threshold for \strong{non-missing} values in \code{x}. The
-number of non-missing values in \code{x} must be greater than or equal to
-\code{n_non} for this check to pass.}
+\item{n_non}{The minimum number of \strong{non-missing} values required.}
+}
+\value{
+A vector of the same type as \code{x}. Either \code{x} with missing
+  values removed if all checks pass, or \code{x} unmodified if any checks
+  fail.
+
+  For consistency with \code{\link[stats]{na.omit}}, if missing
+  values are removed, the indices of the removed values form an
+  \code{na.action} attribute of class \code{omit} in the result.
+
+  If missing values are not removed (because the checks failed or there were
+  no missing values in \code{x}) then no \code{na.action} attribute is added.
 }
 \description{
 These set of functions remove missing values from \code{x} if the single,

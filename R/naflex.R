@@ -1,16 +1,17 @@
 #' naflex: Flexible missing value checks and omit functions.
 #'
 #' The \code{naflex} package provides additional flexibility for handling
-#' missing values in summary functions beyond the two extreme options (\code{na.rm = TRUE/FALSE})
-#' available in base R.
+#' missing values in summary functions beyond the two extreme options
+#' (\code{na.rm = TRUE/FALSE}) available in base R.
 #'
 #' Most summary functions in R e.g. \code{mean} provide the option for the two
 #' extremes:
 #' \itemize{
-#' \item calculate the summary ignoring all missing values, \code{na.rm = TRUE}, or
+#' \item calculate the summary ignoring all missing values, \code{na.rm = TRUE},
+#' or
 #'
-#' \item require no missing values for the summary to be calculated, \code{na.rm =
-#' FALSE}
+#' \item require no missing values for the summary to be calculated,
+#' \code{na.rm = FALSE}
 #' }
 #' In many applications something in between these two extremes is often
 #' appropriate. For example, you may wish to give a summary statistic if less

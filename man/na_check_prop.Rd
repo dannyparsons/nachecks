@@ -22,36 +22,35 @@ na_check_non_na(x, n_non = NULL)
 
 \item{strict}{A logical (default \code{FALSE}) indicating if the proportion
 of missing values must be \strong{strictly} less than \code{prop}
-(\code{strict = TRUE}) or only less than \code{na_prop} (\code{strict =
+(\code{strict = TRUE}) or only less than \code{prop} (\code{strict =
 FALSE}).}
 
 \item{n}{The maximum number of missing values allowed.}
 
 \item{consec}{The maximum number of consecutive missing values allowed.}
 
-\item{n_non}{The threshold for \strong{non-missing} values in \code{x}.}
+\item{n_non}{The minimum number of \strong{non-missing} values required.}
 }
 \value{
 \code{TRUE} if the check passes, and \code{FALSE} otherwise.
 
-\code{TRUE} if the proportion of missing values in \code{x} is less
-  than (or strictly less than if \code{strict = TRUE}) \code{prop}, and
+\code{na_check_prop} returns \code{TRUE} if the proportion of missing values in \code{x} is less
+  than or equal to \code{prop} (or strictly less than \code{prop} if \code{strict = TRUE}), and
   \code{FALSE} otherwise.
 
-\code{TRUE} if the number of missing values in \code{x}
+\code{na_check_n} returns \code{TRUE} if the number of missing values in \code{x}
 is less than or equal to \code{n} and \code{FALSE} otherwise.
 
-\code{TRUE} if the longest sequence of consecutive missing values in
+\code{na_check_consec} returns \code{TRUE} if the longest sequence of consecutive missing values in
   \code{x} is less than or equal to \code{n} and \code{FALSE} otherwise.
 
-\code{TRUE} if the number of \strong{non-missing} values in \code{x}
+\code{na_check_non_na} returns \code{TRUE} if the number of \strong{non-missing} values in \code{x}
   is greater than or equal to \code{n} and \code{FALSE} otherwise.
 }
 \description{
 \code{na_check_prop} returns \code{TRUE} if the proportion of missing values
-is below a given threshold. This is a convenient wrapper function for
-\code{na_prop(x) < prop} or \code{na_prop(x) <= prop} (depending on
-\code{strict}).
+is below \code{prop}. This is a convenient wrapper function for
+ \code{na_prop(x) <= prop} or \code{na_prop(x) < prop} (if \code{strict = TRUE}).
 }
 \details{
 \code{na_check_n} returns \code{TRUE} if the number of

@@ -27,7 +27,8 @@ A set of functions for calculating missing values properties of a vector.
 \itemize{
 \item \code{\link{na_prop}}: The proportion of missing values
 \item \code{\link{na_n}}: The number of missing values
-\item \code{\link{na_consec}}: The maximum number of consecutive missing values
+\item \code{\link{na_consec}}: The maximum number of consecutive missing
+values
 \item \code{\link{na_non_na}}: The number of non-missing values
 }
 }

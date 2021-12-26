@@ -7,6 +7,9 @@
 
 [![R-CMD-check](https://github.com/dannyparsons/naflex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dannyparsons/naflex/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/dannyparsons/naflex/branch/master/graph/badge.svg?token=MSQKXE5UYR)](https://codecov.io/gh/dannyparsons/naflex)
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/naflex)](https://cran.r-project.org/package=naflex)
 [![license](https://img.shields.io/badge/license-LGPL%20(%3E=%203)-lightgrey.svg)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 <!-- badges: end -->
@@ -49,7 +52,7 @@ The main function in `naflex` is `na_omit_if`.
 
 When wrapped around a vector in a summary function, `na_omit_if` ensures
 that the summary value is calculated when the checks pass, and returns
-`NA` if not. The example below shows how to calculate the `mean`
+`NA` if not. The example below shows how to calculate the `mean`,
 conditionally on the proportion of missing values.
 
 ``` r

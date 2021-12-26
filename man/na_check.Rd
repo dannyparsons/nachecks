@@ -14,37 +14,30 @@ na_check(
 )
 }
 \arguments{
-\item{x}{Vector to check missing values conditions on.}
+\item{x}{Vector to check the missing value properties of.}
 
-\item{prop}{The proportion threshold (0 to 1) for missing values in \code{x}.
-The proportion of missing values must be less than (or equal to)
-\code{prop} for this check to pass.}
+\item{prop}{The maximum proportion (0 to 1) of missing values allowed.}
 
-\item{n}{The threshold for the number of missing values in \code{x}. The
-number of missing values must be less than or equal to \code{n} for this
-check to pass.}
+\item{n}{The maximum number of missing values allowed.}
 
-\item{consec}{The threshold for the longest sequence of consecutive missing
-values in \code{x}. The longest sequence of consecutive missing values must
-be less than or equal to \code{consec} for this check to pass.}
+\item{consec}{The maximum number of consecutive missing values allowed.}
 
-\item{n_non}{The threshold for \strong{non-missing} values in \code{x}. The
-number of non-missing values in \code{x} must be greater than or equal to
-\code{n_non} for this check to pass.}
+\item{n_non}{The minimum number of \strong{non-missing} values required.}
 
 \item{prop_strict}{A logical (default \code{FALSE}) indicating if the
 proportion of missing values must be \strong{strictly} less than
-\code{prop} (\code{strict = TRUE}) or only less than \code{na_prop}
-(\code{strict = FALSE}). Ignored if \code{na_prop} is missing.}
+\code{prop} (\code{prop_strict = TRUE}) or only less than \code{prop}
+(\code{prop_strict = FALSE}).}
 }
 \value{
 \code{TRUE} if all specified checks pass, and \code{FALSE} otherwise.
 }
 \description{
-\code{na_check} checks conditions on missing values. If all the checks pass
-it returns \code{TRUE}, otherwise \code{FALSE}. There are four type of checks
-possible to specify: proportion and number of missing values, maximum number
-of consecutive missing values, and number of non-missing values.
+\code{na_check} checks conditions on missing values in a vector. If all the
+checks pass it returns \code{TRUE}, otherwise \code{FALSE}. There are four
+type of checks possible to specify: proportion and number of missing values,
+maximum number of consecutive missing values, and number of non-missing
+values.
 }
 \details{
 \code{prop}, \code{n}, \code{consec} and \code{n_non} are optional and any

@@ -1,59 +1,37 @@
-#' Check the proportion of missing values
+#' Check missing values conditions (single condition)
 #'
-#' \code{na_check_prop} returns \code{TRUE} if the proportion of missing values
-#' is below a given threshold. This is a convenient wrapper function for
-#' \code{na_prop(x) < prop} or \code{na_prop(x) <= prop} (depending on
-#' \code{strict}).
+#' These set of functions check a condition on missing values in a vector \code{x}. They return \code{TRUE} if check passes, and \code{FALSE} otherwise.
+#' They are special cases of \code{\link{na_check}}, which is the general case for
+#' specifying multiple checks.
 #'
-#' \code{na_check_n} returns \code{TRUE} if the number of
-#' missing values is less than or equal to a given threshold.
-#' This is a convenient wrapper function for \code{na_n(x) <= n}.
+#' These functions replicate the functionality of
+#' \code{\link{na_check}} as individual functions for single checks.
 #'
-#' \code{na_check_consec} returns \code{TRUE} if the longest sequence of
-#' consecutive missing values is less than or equal to a given threshold. This
-#' is a convenient wrapper function for \code{na_consec(x) <= n}.
+#' For example, \code{na_check_n(x, 5)} is equivalent to
+#' \code{na_check(x, n = 5)}.
 #'
-#' \code{na_check_non_na} returns \code{TRUE} if the number of
-#' \strong{non-missing} values is greater than or equal to a given threshold.
-#' This is a convenient wrapper function for \code{na_non_na(x) >= n}.
+#' This more restricted form may be desirable when only a single check is
+#' required.
 #'
-#' Note that unlike the other \code{check_*} functions in \code{na_check_non_na}
-#' the threshold is for a minimum number, since it is concerned with
-#' \strong{non-missing} values.
-#'
-#' If \code{strict = FALSE} (the default), \code{na_check_prop} is equivalent to
-#' \code{na_prop(x) <= prop} i.e. it returns \code{TRUE} if the proportion of
-#' missing values in \code{x} is less than or equal to \code{na_prop}, and
-#' \code{FALSE} otherwise.
-#'
-#' If \code{strict = TRUE}, \code{na_check_prop} is equivalent to
-#' \code{na_prop(x) < prop} i.e. the same as above but with a strictly less than
-#' \code{prop} condition.
-#'
-#' @param x Vector to check the missing value properties of.
+#' @param x Vector to check the missing values properties of.
 #' @param prop The maximum proportion (0 to 1) of missing values allowed.
 #' @param n The maximum number of missing values allowed.
 #' @param consec The maximum number of consecutive missing values allowed.
-#' @param n_non The threshold for \strong{non-missing} values in \code{x}.
+#' @param n_non The minimum number of \strong{non-missing} values required.
 #' @param strict A logical (default \code{FALSE}) indicating if the proportion
 #'   of missing values must be \strong{strictly} less than \code{prop}
-#'   (\code{strict = TRUE}) or only less than \code{na_prop} (\code{strict =
+#'   (\code{strict = TRUE}) or only less than \code{prop} (\code{strict =
 #'   FALSE}).
 #'
-#' @return \code{TRUE} if the check passes, and \code{FALSE} otherwise.
+#' @return These functions return \code{TRUE} if the check passes, and \code{FALSE} otherwise.
 #'
-#' \code{TRUE} if the proportion of missing values in \code{x} is less
-#'   than (or strictly less than if \code{strict = TRUE}) \code{prop}, and
-#'   \code{FALSE} otherwise.
-#'
-#' \code{TRUE} if the number of missing values in \code{x}
-#' is less than or equal to \code{n} and \code{FALSE} otherwise.
-#'
-#' \code{TRUE} if the longest sequence of consecutive missing values in
-#'   \code{x} is less than or equal to \code{n} and \code{FALSE} otherwise.
-#'
-#' \code{TRUE} if the number of \strong{non-missing} values in \code{x}
-#'   is greater than or equal to \code{n} and \code{FALSE} otherwise.
+#' They are convenient wrapper functions for:
+#' \itemize{
+#' \item \code{na_prop(x) <= prop} or \code{na_prop(x) < prop} (if \code{strict = TRUE})
+#' \item \code{na_n(x) <= n}
+#' \item \code{na_consec(x) <= n}
+#' \item \code{na_non_na(x) >= n}
+#' }
 #'
 #' @export
 #' @examples

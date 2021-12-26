@@ -1,33 +1,27 @@
-#' Check conditions of missing values
+#' Check missing values conditions
 #'
-#' \code{na_check} checks conditions on missing values. If all the checks pass
-#' it returns \code{TRUE}, otherwise \code{FALSE}. There are four type of checks
-#' possible to specify: proportion and number of missing values, maximum number
-#' of consecutive missing values, and number of non-missing values.
+#' \code{na_check} checks conditions on missing values in a vector. If all the
+#' checks pass it returns \code{TRUE}, otherwise \code{FALSE}.
 #'
-#' \code{prop}, \code{n}, \code{consec} and \code{n_non} are optional and any
-#' number of conditions may be specified, including none. If no checks are
-#' specified then \code{TRUE} is returned, since this is considered as "all"
-#' checks passing. If multiple conditions are specified, they must all be
-#' satisfied to return \code{TRUE}.
+#' There are four type of checks available:
+#' \itemize{
+#' \item a maximum proportion of missing values allowed (\code{prop})
+#' \item a maximum number of missing values allowed (\code{n})
+#' \item a maximum number of consecutive missing values allowed (\code{consec}),
+#' and
+#' \item a minimum number of non-missing values required (\code{n_non}).
+#' }
 #'
-#' @param x Vector to check missing values conditions on.
-#' @param prop The proportion threshold (0 to 1) for missing values in \code{x}.
-#'   The proportion of missing values must be less than (or equal to)
-#'   \code{prop} for this check to pass.
-#' @param n The threshold for the number of missing values in \code{x}. The
-#'   number of missing values must be less than or equal to \code{n} for this
-#'   check to pass.
-#' @param consec The threshold for the longest sequence of consecutive missing
-#'   values in \code{x}. The longest sequence of consecutive missing values must
-#'   be less than or equal to \code{consec} for this check to pass.
-#' @param n_non The threshold for \strong{non-missing} values in \code{x}. The
-#'   number of non-missing values in \code{x} must be greater than or equal to
-#'   \code{n_non} for this check to pass.
+#' Any number of checks may be specified, including none. If multiple checks are
+#' specified, they must all pass in order to return \code{TRUE}.
+#' If no checks are specified then \code{TRUE} is returned, since
+#' this is considered as "all" checks passing.
+#'
+#' @inheritParams na_check_prop
 #' @param prop_strict A logical (default \code{FALSE}) indicating if the
 #'   proportion of missing values must be \strong{strictly} less than
-#'   \code{prop} (\code{strict = TRUE}) or only less than \code{na_prop}
-#'   (\code{strict = FALSE}). Ignored if \code{na_prop} is missing.
+#'   \code{prop} (\code{prop_strict = TRUE}) or only less than \code{prop}
+#'   (\code{prop_strict = FALSE}).
 #'
 #' @return \code{TRUE} if all specified checks pass, and \code{FALSE} otherwise.
 #' @export
@@ -44,16 +38,12 @@ na_check <- function(x, prop = NULL, n = NULL, consec = NULL, n_non = NULL,
 }
 
 #' @export
-na_check.default <- function(x, prop = NULL, n = NULL, consec = NULL, n_non = NULL,
-                     prop_strict = FALSE) {
-  is_prop <- !is.null(prop)
-  is_na <- !is.null(n)
-  is_consec <- !is.null(consec)
-  is_na_non_na <- !is.null(n_non)
+na_check.default <- function(x, prop = NULL, n = NULL, consec = NULL,
+                             n_non = NULL, prop_strict = FALSE) {
 
-  (!is_prop || (is_prop && na_check_prop(x = x, prop = prop, strict = prop_strict))) &&
-    (!is_na || (is_na && na_check_n(x = x, n = n))) &&
-    (!is_na_non_na || (is_na_non_na && na_check_non_na(x = x, n_non = n_non))) &&
+  (is.null(prop) || na_check_prop(x = x, prop = prop, strict = prop_strict)) &&
+    (is.null(n) || na_check_n(x = x, n = n)) &&
+    (is.null(n_non) || na_check_non_na(x = x, n_non = n_non)) &&
     # Done last as most computationally intensive
-    (!is_consec || (is_consec && na_check_consec(x = x, consec = consec)))
+    (is.null(consec) || na_check_consec(x = x, consec = consec))
 }

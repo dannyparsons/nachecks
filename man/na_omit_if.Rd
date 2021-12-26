@@ -9,27 +9,18 @@ na_omit_if(x, prop, n, consec, n_non, prop_strict = FALSE)
 \arguments{
 \item{x}{Vector to omit missing values in if checks pass.}
 
-\item{prop}{The proportion threshold (0 to 1) for missing values in \code{x}.
-The proportion of missing values in \code{x} must be less than (or equal
-to) \code{prop} for this check to pass, or strictly less than \code{prop}
-if \code{strict = TRUE}.}
+\item{prop}{The maximum proportion (0 to 1) of missing values allowed.}
 
-\item{n}{The threshold for the number of missing values in \code{x}. The
-number of missing values in \code{x} must be less than or equal to \code{n} for this
-check to pass.}
+\item{n}{The maximum number of missing values allowed.}
 
-\item{consec}{The threshold for the longest sequence of consecutive missing
-values in \code{x}. The longest sequence of consecutive missing values in \code{x} must
-be less than or equal to \code{consec} for this check to pass.}
+\item{consec}{The maximum number of consecutive missing values allowed.}
 
-\item{n_non}{The threshold for \strong{non-missing} values in \code{x}. The
-number of non-missing values in \code{x} must be greater than or equal to
-\code{n_non} for this check to pass.}
+\item{n_non}{The minimum number of \strong{non-missing} values required.}
 
-\item{prop_strict}{A logical (default \code{FALSE}) indicating if the proportion
-of missing values must be \strong{strictly} less than \code{prop}
-(\code{strict = TRUE}) or only less than or equal to \code{na_prop}
-(\code{strict = FALSE}). Ignored if \code{na_prop} is missing.}
+\item{prop_strict}{A logical (default \code{FALSE}) indicating if the
+proportion of missing values must be \strong{strictly} less than
+\code{prop} (\code{prop_strict = TRUE}) or only less than \code{prop}
+(\code{prop_strict = FALSE}).}
 }
 \value{
 A vector of the same type as \code{x}. Either \code{x} with missing
@@ -40,13 +31,13 @@ A vector of the same type as \code{x}. Either \code{x} with missing
   values are removed, the indices of the removed values form an
   \code{na.action} attribute of class \code{omit} in the result.
 
-  If no missing values are removed (because the checks failed or there were
+  If missing values are not removed (because the checks failed or there were
   no missing values in \code{x}) then no \code{na.action} attribute is added.
 }
 \description{
-\code{na_omit_if} removes missing values from \code{x} if the specified checks
-are satisfied, and returns \code{x} unmodified otherwise. When used within
-summary functions, \code{na_omit_if} provides greater flexibility than
+\code{na_omit_if} removes missing values from \code{x} if the specified
+checks are satisfied, and returns \code{x} unmodified otherwise. When used
+within summary functions, \code{na_omit_if} provides greater flexibility than
 the \code{na.rm} option e.g. \code{sum(na_omit_if(x, prop = 0.05))}.
 }
 \details{
@@ -54,7 +45,8 @@ There are four type of checks available:
 \itemize{
 \item a maximum proportion of missing values allowed (\code{prop})
 \item a maximum number of missing values allowed (\code{na})
-\item a maximum number of consecutive missing values allowed (\code{consec}), and
+\item a maximum number of consecutive missing values allowed (\code{consec}),
+and
 \item a minimum number of non-missing values required (\code{na_non_na}).
 }
 
