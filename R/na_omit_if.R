@@ -47,7 +47,7 @@
 #' daily_rain <- rnorm(30)
 #' daily_rain[c(3, 5, 6, 7, 8, 9, 24, 28)] <- NA
 #' sum(daily_rain %>% na_omit_if(n = 10, consec = 4))
-na_omit_if <- function(x, prop, n, consec, n_non,
+na_omit_if <- function(x, prop = NULL, n = NULL, consec = NULL, n_non = NULL,
                        prop_strict = FALSE) {
   UseMethod("na_omit_if")
 }
@@ -57,54 +57,6 @@ na_omit_if.default <- function(x, prop = NULL, n = NULL, consec = NULL,
                                n_non = NULL, prop_strict = FALSE) {
   if (na_check(x = x, prop = prop, n = n, consec = consec,
                n_non = n_non, prop_strict = prop_strict)) {
-    stats::na.omit(x)
-  } else x
-}
-
-#' @export
-na_omit_if_prop <- function(x, prop, strict = FALSE) {
-  UseMethod("na_omit_if_prop")
-}
-
-#' @export
-na_omit_if_prop.default <- function(x, prop, strict = FALSE) {
-  if (na_check_prop(x = x, prop = prop, strict = strict)) {
-    stats::na.omit(x)
-  } else x
-}
-
-#' @export
-na_omit_if_n <- function(x, n) {
-  UseMethod("na_omit_if_n")
-}
-
-#' @export
-na_omit_if_n.default <- function(x, n) {
-  if (na_check_n(x = x, n = n)) {
-    stats::na.omit(x)
-  } else x
-}
-
-#' @export
-na_omit_if_non_na <- function(x, n_non) {
-  UseMethod("na_omit_if_non_na")
-}
-
-#' @export
-na_omit_if_non_na.default <- function(x, n_non) {
-  if (na_check_non_na(x = x, n_non = n_non)) {
-    stats::na.omit(x)
-  } else x
-}
-
-#' @export
-na_omit_if_consec <- function(x, consec) {
-  UseMethod("na_omit_if_consec")
-}
-
-#' @export
-na_omit_if_consec.default <- function(x, consec) {
-  if (na_check_consec(x = x, consec = consec)) {
     stats::na.omit(x)
   } else x
 }

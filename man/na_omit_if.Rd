@@ -4,7 +4,14 @@
 \alias{na_omit_if}
 \title{Conditionally omit missing values}
 \usage{
-na_omit_if(x, prop, n, consec, n_non, prop_strict = FALSE)
+na_omit_if(
+  x,
+  prop = NULL,
+  n = NULL,
+  consec = NULL,
+  n_non = NULL,
+  prop_strict = FALSE
+)
 }
 \arguments{
 \item{x}{Vector to omit missing values in if checks pass.}

@@ -29,12 +29,12 @@
 #'   no missing values in \code{x}) then no \code{na.action} attribute is added.
 #'
 #' @export
-na_omit_if_prop <- function(x, prop, strict = FALSE) {
+na_omit_if_prop <- function(x, prop = NULL, strict = FALSE) {
   UseMethod("na_omit_if_prop")
 }
 
 #' @export
-na_omit_if_prop.default <- function(x, prop, strict = FALSE) {
+na_omit_if_prop.default <- function(x, prop = NULL, strict = FALSE) {
   if (na_check_prop(x = x, prop = prop, strict = strict)) {
     stats::na.omit(x)
   } else x
@@ -42,25 +42,25 @@ na_omit_if_prop.default <- function(x, prop, strict = FALSE) {
 
 #' @rdname na_omit_if_prop
 #' @export
-na_omit_if_n <- function(x, na) {
+na_omit_if_n <- function(x, n = NULL) {
   UseMethod("na_omit_if_n")
 }
 
 #' @export
-na_omit_if_n.default <- function(x, na) {
-  if (na_check_n(x = x, na = na)) {
+na_omit_if_n.default <- function(x, n = NULL) {
+  if (na_check_n(x = x, n = n)) {
     stats::na.omit(x)
   } else x
 }
 
 #' @rdname na_omit_if_prop
 #' @export
-na_omit_if_consec <- function(x, consec) {
+na_omit_if_consec <- function(x, consec = NULL) {
   UseMethod("na_omit_if_consec")
 }
 
 #' @export
-na_omit_if_consec.default <- function(x, consec) {
+na_omit_if_consec.default <- function(x, consec = NULL) {
   if (na_check_consec(x = x, consec = consec)) {
     stats::na.omit(x)
   } else x
@@ -68,13 +68,13 @@ na_omit_if_consec.default <- function(x, consec) {
 
 #' @rdname na_omit_if_prop
 #' @export
-na_omit_if_non_na <- function(x, na_non_na) {
+na_omit_if_non_na <- function(x, n_non = NULL) {
   UseMethod("na_omit_if_non_na")
 }
 
 #' @export
-na_omit_if_non_na.default <- function(x, na_non_na) {
-  if (na_check_non_na(x = x, na_non_na = na_non_na)) {
+na_omit_if_non_na.default <- function(x, n_non = NULL) {
+  if (na_check_non_na(x = x, n_non = n_non)) {
     stats::na.omit(x)
   } else x
 }

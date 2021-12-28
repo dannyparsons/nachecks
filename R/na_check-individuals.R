@@ -1,8 +1,9 @@
 #' Check missing values conditions (single condition)
 #'
-#' These set of functions check a condition on missing values in a vector \code{x}. They return \code{TRUE} if check passes, and \code{FALSE} otherwise.
-#' They are special cases of \code{\link{na_check}}, which is the general case for
-#' specifying multiple checks.
+#' These set of functions check a condition on missing values in a vector
+#' \code{x}. They return \code{TRUE} if check passes, and \code{FALSE}
+#' otherwise. They are special cases of \code{\link{na_check}}, which is the
+#' general case for specifying multiple checks.
 #'
 #' These functions replicate the functionality of
 #' \code{\link{na_check}} as individual functions for single checks.
@@ -23,14 +24,16 @@
 #'   (\code{strict = TRUE}) or only less than \code{prop} (\code{strict =
 #'   FALSE}).
 #'
-#' @return These functions return \code{TRUE} if the check passes, and \code{FALSE} otherwise.
+#' @return These functions return \code{TRUE} if the check passes, and
+#'   \code{FALSE} otherwise.
 #'
 #' They are convenient wrapper functions for:
 #' \itemize{
-#' \item \code{na_prop(x) <= prop} or \code{na_prop(x) < prop} (if \code{strict = TRUE})
+#' \item \code{na_prop(x) <= prop} or \code{na_prop(x) < prop}
+#' (if \code{strict = TRUE})
 #' \item \code{na_n(x) <= n}
-#' \item \code{na_consec(x) <= n}
-#' \item \code{na_non_na(x) >= n}
+#' \item \code{na_consec(x) <= consec}
+#' \item \code{na_non_na(x) >= n_non}
 #' }
 #'
 #' @export

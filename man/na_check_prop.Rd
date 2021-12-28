@@ -32,20 +32,23 @@ FALSE}).}
 \item{n_non}{The minimum number of \strong{non-missing} values required.}
 }
 \value{
-These functions return \code{TRUE} if the check passes, and \code{FALSE} otherwise.
+These functions return \code{TRUE} if the check passes, and
+  \code{FALSE} otherwise.
 
 They are convenient wrapper functions for:
 \itemize{
-\item \code{na_prop(x) <= prop} or \code{na_prop(x) < prop} (if \code{strict = TRUE})
+\item \code{na_prop(x) <= prop} or \code{na_prop(x) < prop}
+(if \code{strict = TRUE})
 \item \code{na_n(x) <= n}
 \item \code{na_consec(x) <= n}
 \item \code{na_non_na(x) >= n}
 }
 }
 \description{
-These set of functions check a condition on missing values in a vector \code{x}. They return \code{TRUE} if check passes, and \code{FALSE} otherwise.
-They are special cases of \code{\link{na_check}}, which is the general case for
-specifying multiple checks.
+These set of functions check a condition on missing values in a vector
+\code{x}. They return \code{TRUE} if check passes, and \code{FALSE}
+otherwise. They are special cases of \code{\link{na_check}}, which is the
+general case for specifying multiple checks.
 }
 \details{
 These functions replicate the functionality of

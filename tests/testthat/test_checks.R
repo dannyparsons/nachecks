@@ -28,7 +28,7 @@ test_that("proportion of NA threshold fails", {
 test_that("strict = TRUE in na_prop returns FALSE on boundary", {
   expect_equal(na_check_prop(x, 0.5, TRUE), FALSE)
   expect_equal(na_check_prop(y, 0.6, TRUE), FALSE)
-  expect_equal(na_check_prop(x, 0.4, TRUE), FALSE)
+  expect_equal(na_check_prop(z, 0.4, TRUE), FALSE)
 })
 
 test_that("proportion check passes without threshold", {
@@ -54,7 +54,6 @@ test_that("number of NA threshold fails", {
   expect_equal(na_check_n(y, 0), FALSE)
   expect_equal(na_check_n(y, 2), FALSE)
   expect_equal(na_check_n(z, 0), FALSE)
-  expect_equal(na_check_n(x, 1), FALSE)
 })
 
 test_that("number of NA check passes without threshold", {
@@ -121,14 +120,7 @@ test_that("na_check passes with no conditions", {
   expect_equal(na_check(w), TRUE)
 })
 
-test_that("na_check passes with no conditions", {
-  expect_equal(na_check(x), TRUE)
-  expect_equal(na_check(y), TRUE)
-  expect_equal(na_check(z), TRUE)
-  expect_equal(na_check(w), TRUE)
-})
-
-test_that("na_check passes with prop and na conditions", {
+test_that("na_check passes with prop and n conditions", {
   expect_equal(na_check(x, prop = 0.5, n = 6), TRUE)
   expect_equal(na_check(y, prop = 0.7, n = 3), TRUE)
   expect_equal(na_check(z, prop = 0.45, n = 50), TRUE)

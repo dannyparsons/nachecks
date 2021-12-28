@@ -5,6 +5,7 @@ x <- c(1, 2, NA, NA, NA, 6, 7, NA, NA, 10)
 y <- c("1", NA, "3", NA, NA)
 z <- as.Date(c("1999/1/1", NA, NA, "1999/1/4", "1999/1/5"))
 w <- 1:10
+zero_vec <- numeric(0)
 
 test_that("proportion of NA is correct", {
   expect_equal(na_prop(x), 0.5)
@@ -40,4 +41,11 @@ test_that("max number of consecutive NA is correct", {
   expect_equal(na_consec(z), 2)
   expect_equal(na_consec(w), 0)
   expect_equal(na_consec(numeric(0)), 0)
+})
+
+test_that("zero length vector NA properties are correct", {
+  expect_equal(na_prop(zero_vec), NaN)
+  expect_equal(na_n(zero_vec), 0)
+  expect_equal(na_consec(zero_vec), 0)
+  expect_equal(na_non_na(zero_vec), 0)
 })
