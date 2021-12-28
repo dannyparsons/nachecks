@@ -139,9 +139,15 @@ test_that("na_omit_if omits with prop and n_non conditions", {
   expect_equal(na_omit_if(w, prop = 0.1, n_non = 10), w_omit)
 })
 
-test_that("na_omit_if omits with four conditions", {
+test_that("na_omit_if omits with four passing conditions", {
   expect_equal(na_omit_if(x, prop = 0.5, n = 6, consec = 4, n_non = 5), x_omit)
   expect_equal(na_omit_if(y, prop = 0.61, n = 4, consec = 2, n_non = 2), y_omit)
   expect_equal(na_omit_if(z, prop = 0.75, n = 2, consec = 2, n_non = 2), z_omit)
   expect_equal(na_omit_if(w, prop = 0, n = 0, consec = 0, n_non = 10), w_omit)
+})
+
+test_that("na_omit_if doesn't omit with three passing and one failing condition", {
+  expect_equal(na_omit_if(x, prop = 0.5, n = 6, consec = 2, n_non = 5), x)
+  expect_equal(na_omit_if(y, prop = 0.55, n = 4, consec = 2, n_non = 2), y)
+  expect_equal(na_omit_if(z, prop = 0.75, n = 1, consec = 2, n_non = 2), z)
 })
