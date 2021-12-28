@@ -14,6 +14,8 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 [![license](https://img.shields.io/badge/license-LGPL%20(%3E=%203)-lightgrey.svg)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 <!-- badges: end -->
 
+## Overview
+
 The `naflex` R package provides additional flexibility for handling
 missing values in summary functions beyond the existing options
 (`na.rm = TRUE`/`FALSE`) available in base R.
@@ -42,10 +44,10 @@ checks:
 ## Motivation
 
 The motivating application for producing this package was the
-calculation of *Climate Normals*: 30 year averages of surface
+calculation of *Climate Normals*: Long term averages of surface
 meteorological measurements e.g. total rainfall and mean temperature
-that provide benchmark knowledge of the climate at specific locations.
-The World Meteorological Organization (WMO) Guidelines on the
+that provide benchmark information about the climate at specific
+locations. The World Meteorological Organization (WMO) Guidelines on the
 Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> provides
 recommendations to standardise these calculations across countries,
 including handling of missing values.

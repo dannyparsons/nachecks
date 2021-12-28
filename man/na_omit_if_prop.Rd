@@ -7,13 +7,13 @@
 \alias{na_omit_if_non_na}
 \title{Conditionally omit missing values (single condition)}
 \usage{
-na_omit_if_prop(x, prop, strict = FALSE)
+na_omit_if_prop(x, prop = NULL, strict = FALSE)
 
-na_omit_if_n(x, n)
+na_omit_if_n(x, n = NULL)
 
-na_omit_if_consec(x, consec)
+na_omit_if_consec(x, consec = NULL)
 
-na_omit_if_non_na(x, n_non)
+na_omit_if_non_na(x, n_non = NULL)
 }
 \arguments{
 \item{x}{Vector to omit missing values in if checks pass.}

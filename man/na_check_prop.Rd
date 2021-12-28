@@ -40,8 +40,8 @@ They are convenient wrapper functions for:
 \item \code{na_prop(x) <= prop} or \code{na_prop(x) < prop}
 (if \code{strict = TRUE})
 \item \code{na_n(x) <= n}
-\item \code{na_consec(x) <= n}
-\item \code{na_non_na(x) >= n}
+\item \code{na_consec(x) <= consec}
+\item \code{na_non_na(x) >= n_non}
 }
 }
 \description{

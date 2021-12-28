@@ -22,6 +22,8 @@ knitr::opts_chunk$set(
 [![license](https://img.shields.io/badge/license-LGPL (>= 3)-lightgrey.svg)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 <!-- badges: end -->
 
+## Overview
+
 The `naflex` R package provides additional flexibility for handling missing values in summary functions beyond the existing options (`na.rm = TRUE`/`FALSE`) available in base R.
 
 Most summary functions in base R e.g. `mean`, provide the two extreme options for handling missing values:
@@ -40,7 +42,7 @@ In many cases, something in between these two extremes is often more appropriate
 
 ## Motivation
 
-The motivating application for producing this package was the calculation of *Climate Normals*: 30 year averages of surface meteorological measurements e.g. total rainfall and mean temperature that provide benchmark knowledge of the climate at specific locations. The World Meteorological Organization (WMO) Guidelines on the Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> provides recommendations to standardise these calculations across countries, including handling of missing values. 
+The motivating application for producing this package was the calculation of *Climate Normals*: Long term averages of surface meteorological measurements e.g. total rainfall and mean temperature that provide benchmark information about the climate at specific locations. The World Meteorological Organization (WMO) Guidelines on the Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> provides recommendations to standardise these calculations across countries, including handling of missing values.
 
 For example, it recommendations that a monthly mean value calculated from daily values should only be calculated when there are no more than `10` missing values in the month and no more than `4` days of consecutive missing values. Adhering to such rules using base R requires doing further calculations and increasing the complexity and length of code. The aim of `naflex` is to make it easier to apply such rules routinely and efficiently as part of calculations.
 

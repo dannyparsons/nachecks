@@ -63,7 +63,10 @@ na_check_prop <- function(x, prop = NULL, strict = FALSE) {
 
 #' @export
 na_check_prop.default <- function(x, prop = NULL, strict = FALSE) {
+  valid_atomic(x, "x")
   if (is.null(prop)) return(TRUE)
+  valid_proportion(prop, "prop")
+  valid_logical(strict, "strict")
   if (strict) na_prop(x) < prop
   else na_prop(x) <= prop
 }
@@ -76,7 +79,9 @@ na_check_n <- function(x, n = NULL) {
 
 #' @export
 na_check_n.default <- function(x, n = NULL) {
+  valid_atomic(x, "x")
   if (is.null(n)) return(TRUE)
+  valid_natural(n, "n")
   na_n(x) <= n
 }
 #' @export
@@ -87,7 +92,9 @@ na_check_consec <- function(x, consec = NULL) {
 
 #' @export
 na_check_consec.default <- function(x, consec = NULL) {
+  valid_atomic(x, "x")
   if (is.null(consec)) return(TRUE)
+  valid_natural(consec, "consec")
   na_consec(x) <= consec
 }
 
@@ -99,6 +106,8 @@ na_check_non_na <- function(x, n_non = NULL) {
 
 #' @export
 na_check_non_na.default <- function(x, n_non = NULL) {
+  valid_atomic(x, "x")
   if (is.null(n_non)) return(TRUE)
+  valid_natural(n_non, "n_non")
   na_non_na(x) >= n_non
 }

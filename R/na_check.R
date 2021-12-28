@@ -40,10 +40,9 @@ na_check <- function(x, prop = NULL, n = NULL, consec = NULL, n_non = NULL,
 #' @export
 na_check.default <- function(x, prop = NULL, n = NULL, consec = NULL,
                              n_non = NULL, prop_strict = FALSE) {
-
-  (is.null(prop) || na_check_prop(x = x, prop = prop, strict = prop_strict)) &&
-    (is.null(n) || na_check_n(x = x, n = n)) &&
-    (is.null(n_non) || na_check_non_na(x = x, n_non = n_non)) &&
+  na_check_prop(x = x, prop = prop, strict = prop_strict) &&
+    na_check_n(x = x, n = n) &&
+    na_check_non_na(x = x, n_non = n_non) &&
     # Done last as most computationally intensive
-    (is.null(consec) || na_check_consec(x = x, consec = consec))
+    na_check_consec(x = x, consec = consec)
 }

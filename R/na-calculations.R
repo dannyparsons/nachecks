@@ -60,6 +60,7 @@ na_consec <- function(x) {
 
 #' @export
 na_consec.default <- function(x) {
+  valid_atomic(x, "x")
   if (length(x) == 0) 0
   r <- rle(is.na(x))
   m <- r$lengths[r$values]
