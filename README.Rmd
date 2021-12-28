@@ -107,7 +107,7 @@ na_omit_if(x, n = 2)
 ```
 A further set of four `na_omit_if_*` functions are provided for doing the same thing but restricted to a single check e.g. `na_omit_if_n(x, 2)`.
 
-`na_check` has the same parameters as `na_omit_if` but returns a logical indicating whether the checks pass. It is used internally in `na_omit_if` and may also be a useful helper function.
+`na_check` has the same parameters as `na_omit_if` but returns a logical indicating whether the checks pass. It is used internally in `na_omit_if` and may also be a useful helper function. 
 
 ```{r}
 if (na_check(x, n = 4, consec = 1)) "NA checks pass" else "NA checks fail"

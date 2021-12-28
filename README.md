@@ -93,7 +93,7 @@ Four types of checks are available:
 2.  `n`: the maximum number of missing values allowed
 3.  `consec`: the maximum number of consecutive missing values allowed,
     and
-4.  `n_non`: the minimum number of non-missing values **required**.
+4.  `n_non`: the minimum number of non-missing values required.
 
 If multiple checks are specified, all checks must pass for missing
 values to be removed. For example, although there are less than 4
@@ -101,6 +101,7 @@ missing values in `x`, there are two consecutive missing values, hence
 the `consec = 1` check fails in the example below the result is `NA`.
 
 ``` r
+# Calculate if 4 or less missing values and 1 or less consecutive missing values 
 mean(na_omit_if(x, n = 4, consec = 1))
 #> [1] NA
 ```
@@ -157,7 +158,7 @@ indicating whether the checks pass. It is used internally in
 `na_omit_if` and may also be a useful helper function.
 
 ``` r
-if (na_check(x, n = 4, consec = 1)) print("NA checks pass") else ("NA checks fail")
+if (na_check(x, n = 4, consec = 1)) "NA checks pass" else "NA checks fail"
 #> [1] "NA checks fail"
 ```
 
