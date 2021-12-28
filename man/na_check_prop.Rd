@@ -5,7 +5,7 @@
 \alias{na_check_n}
 \alias{na_check_consec}
 \alias{na_check_non_na}
-\title{Check the proportion of missing values}
+\title{Check missing values conditions (single condition)}
 \usage{
 na_check_prop(x, prop = NULL, strict = FALSE)
 
@@ -16,7 +16,7 @@ na_check_consec(x, consec = NULL)
 na_check_non_na(x, n_non = NULL)
 }
 \arguments{
-\item{x}{Vector to check the missing value properties of.}
+\item{x}{Vector to check the missing values properties of.}
 
 \item{prop}{The maximum proportion (0 to 1) of missing values allowed.}
 
@@ -32,51 +32,30 @@ FALSE}).}
 \item{n_non}{The minimum number of \strong{non-missing} values required.}
 }
 \value{
-\code{TRUE} if the check passes, and \code{FALSE} otherwise.
+These functions return \code{TRUE} if the check passes, and \code{FALSE} otherwise.
 
-\code{na_check_prop} returns \code{TRUE} if the proportion of missing values in \code{x} is less
-  than or equal to \code{prop} (or strictly less than \code{prop} if \code{strict = TRUE}), and
-  \code{FALSE} otherwise.
-
-\code{na_check_n} returns \code{TRUE} if the number of missing values in \code{x}
-is less than or equal to \code{n} and \code{FALSE} otherwise.
-
-\code{na_check_consec} returns \code{TRUE} if the longest sequence of consecutive missing values in
-  \code{x} is less than or equal to \code{n} and \code{FALSE} otherwise.
-
-\code{na_check_non_na} returns \code{TRUE} if the number of \strong{non-missing} values in \code{x}
-  is greater than or equal to \code{n} and \code{FALSE} otherwise.
+They are convenient wrapper functions for:
+\itemize{
+\item \code{na_prop(x) <= prop} or \code{na_prop(x) < prop} (if \code{strict = TRUE})
+\item \code{na_n(x) <= n}
+\item \code{na_consec(x) <= n}
+\item \code{na_non_na(x) >= n}
+}
 }
 \description{
-\code{na_check_prop} returns \code{TRUE} if the proportion of missing values
-is below \code{prop}. This is a convenient wrapper function for
- \code{na_prop(x) <= prop} or \code{na_prop(x) < prop} (if \code{strict = TRUE}).
+These set of functions check a condition on missing values in a vector \code{x}. They return \code{TRUE} if check passes, and \code{FALSE} otherwise.
+They are special cases of \code{\link{na_check}}, which is the general case for
+specifying multiple checks.
 }
 \details{
-\code{na_check_n} returns \code{TRUE} if the number of
-missing values is less than or equal to a given threshold.
-This is a convenient wrapper function for \code{na_n(x) <= n}.
+These functions replicate the functionality of
+\code{\link{na_check}} as individual functions for single checks.
 
-\code{na_check_consec} returns \code{TRUE} if the longest sequence of
-consecutive missing values is less than or equal to a given threshold. This
-is a convenient wrapper function for \code{na_consec(x) <= n}.
+For example, \code{na_check_n(x, 5)} is equivalent to
+\code{na_check(x, n = 5)}.
 
-\code{na_check_non_na} returns \code{TRUE} if the number of
-\strong{non-missing} values is greater than or equal to a given threshold.
-This is a convenient wrapper function for \code{na_non_na(x) >= n}.
-
-Note that unlike the other \code{check_*} functions in \code{na_check_non_na}
-the threshold is for a minimum number, since it is concerned with
-\strong{non-missing} values.
-
-If \code{strict = FALSE} (the default), \code{na_check_prop} is equivalent to
-\code{na_prop(x) <= prop} i.e. it returns \code{TRUE} if the proportion of
-missing values in \code{x} is less than or equal to \code{na_prop}, and
-\code{FALSE} otherwise.
-
-If \code{strict = TRUE}, \code{na_check_prop} is equivalent to
-\code{na_prop(x) < prop} i.e. the same as above but with a strictly less than
-\code{prop} condition.
+This more restricted form may be desirable when only a single check is
+required.
 }
 \examples{
 na_check_prop(c(1, 2, NA, 4), 0.6)

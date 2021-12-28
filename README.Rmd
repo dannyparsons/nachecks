@@ -38,6 +38,12 @@ In many cases, something in between these two extremes is often more appropriate
 3. a maximum number of consecutive missing values allowed, and
 4. a minimum number of non-missing values required.
 
+## Motivation
+
+The motivating application for producing this package was the calculation of *Climate Normals*: 30 year averages of surface meteorological measurements e.g. total rainfall and mean temperature that provide benchmark knowledge of the climate at specific locations. The World Meteorological Organization (WMO) Guidelines on the Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> provides recommendations to standardise these calculations across countries, including handling of missing values. 
+
+For example, it recommendations that a monthly mean value calculated from daily values should only be calculated when there are no more than `10` missing values in the month and no more than `4` days of consecutive missing values. Adhering to such rules using base R requires doing further calculations and increasing the complexity and length of code. The aim of `naflex` is to make it easier to apply such rules routinely and efficiently as part of calculations.
+
 ## Installation
 
 ```{r eval = FALSE}
@@ -67,11 +73,12 @@ Four types of checks are available:
 1. `prop`: the maximum proportion (0 to 1) of missing values allowed
 2. `n`: the maximum number of missing values allowed
 3. `consec`: the maximum number of consecutive missing values allowed, and
-4. `n_non`: the minimum number of non-missing values **required**.
+4. `n_non`: the minimum number of non-missing values required.
 
 If multiple checks are specified, all checks must pass for missing values to be removed. For example, although there are less than 4 missing values in `x`, there are two consecutive missing values, hence the `consec = 1` check fails in the example below the result is `NA`.
 
 ```{r}
+# Calculate if 4 or less missing values and 1 or less consecutive missing values 
 mean(na_omit_if(x, n = 4, consec = 1))
 ```
 The use of `%>%` ("pipe") from `magrittr` can be used to make the code look clearer and more familiar. The beginning of the line is now the same as standard R and it moves `na_omit_if` after `x` which then appears more like an option within the function, like `na.rm`, which is how you might think about `na_omit_if` conceptually in this case.
@@ -103,7 +110,7 @@ A further set of four `na_omit_if_*` functions are provided for doing the same t
 `na_check` has the same parameters as `na_omit_if` but returns a logical indicating whether the checks pass. It is used internally in `na_omit_if` and may also be a useful helper function.
 
 ```{r}
-if (na_check(x, n = 4, consec = 1)) print("NA checks pass") else ("NA checks fail")
+if (na_check(x, n = 4, consec = 1)) "NA checks pass" else "NA checks fail"
 ```
 
 A set a four `na_check_*` functions are also provided for doing the same thing restricted to a single check e.g. `na_check_prop(x, 0.2)`
@@ -119,7 +126,7 @@ na_non_na(x)
 
 ## Compared to base R
 
-In base R, this functionality can often be achieved using a combination of `ifelse`, `is.na` and the option `na.rm = TRUE`.`naflex` aims to simplify, shorten and standardise this process for users.
+In base R, this functionality can often be achieved using a combination of `ifelse`, `is.na`, `rle` and the option `na.rm = TRUE`.`naflex` aims to simplify, shorten and standardise this process for users.
 
 For example, the equivalent of:
 
@@ -133,10 +140,19 @@ in base R is:
 ifelse(sum(is.na(x)) <= 4 && mean(is.na(x)) <= 0.2, mean(x, na.rm = TRUE), NA)
 ```
 
+The check for longest sequence of consecutive missing values is more complex and requires clever use of the `rle` function. For example,
 
-## Relevance to applications
+```{r}
+mean(na_omit_if(x, consec = 5))
+```
 
-The World Meteorological Organization (WMO) Guidelines on the Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> recommends that a monthly mean value calculated from daily values should be calculated as long as there are no more than `10` missing values and no more than `4` consecutive missing values in the month.
+is equivalent to:
+
+```{r}
+r <- rle(is.na(x))
+m <- r$lengths[r$values]
+ifelse(max(m) <= 5, mean(x, na.rm = TRUE), NA)
+```
 
 # References
 <sup id="f1">1</sup> <a href="https://library.wmo.int/index.php?lvl=notice_display&id=20130#.XljKS84zZnI">WMO Guidelines on the Calculation of Climate Normals</a> [↩](#a1)

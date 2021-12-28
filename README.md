@@ -39,6 +39,25 @@ checks:
 3.  a maximum number of consecutive missing values allowed, and
 4.  a minimum number of non-missing values required.
 
+## Motivation
+
+The motivating application for producing this package was the
+calculation of *Climate Normals*: 30 year averages of surface
+meteorological measurements e.g. total rainfall and mean temperature
+that provide benchmark knowledge of the climate at specific locations.
+The World Meteorological Organization (WMO) Guidelines on the
+Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> provides
+recommendations to standardise these calculations across countries,
+including handling of missing values.
+
+For example, it recommendations that a monthly mean value calculated
+from daily values should only be calculated when there are no more than
+`10` missing values in the month and no more than `4` days of
+consecutive missing values. Adhering to such rules using base R requires
+doing further calculations and increasing the complexity and length of
+code. The aim of `naflex` is to make it easier to apply such rules
+routinely and efficiently as part of calculations.
+
 ## Installation
 
 ``` r
@@ -162,8 +181,8 @@ na_non_na(x)
 ## Compared to base R
 
 In base R, this functionality can often be achieved using a combination
-of `ifelse`, `is.na` and the option `na.rm = TRUE`.`naflex` aims to
-simplify, shorten and standardise this process for users.
+of `ifelse`, `is.na`, `rle` and the option `na.rm = TRUE`.`naflex` aims
+to simplify, shorten and standardise this process for users.
 
 For example, the equivalent of:
 
@@ -179,13 +198,22 @@ ifelse(sum(is.na(x)) <= 4 && mean(is.na(x)) <= 0.2, mean(x, na.rm = TRUE), NA)
 #> [1] NA
 ```
 
-## Relevance to applications
+The check for longest sequence of consecutive missing values is more
+complex and requires clever use of the `rle` function. For example,
 
-The World Meteorological Organization (WMO) Guidelines on the
-Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> recommends
-that a monthly mean value calculated from daily values should be
-calculated as long as there are no more than `10` missing values and no
-more than `4` consecutive missing values in the month.
+``` r
+mean(na_omit_if(x, consec = 5))
+#> [1] 4.142857
+```
+
+is equivalent to:
+
+``` r
+r <- rle(is.na(x))
+m <- r$lengths[r$values]
+ifelse(max(m) <= 5, mean(x, na.rm = TRUE), NA)
+#> [1] 4.142857
+```
 
 # References
 

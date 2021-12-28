@@ -44,17 +44,16 @@ the \code{na.rm} option e.g. \code{sum(na_omit_if(x, prop = 0.05))}.
 There are four type of checks available:
 \itemize{
 \item a maximum proportion of missing values allowed (\code{prop})
-\item a maximum number of missing values allowed (\code{na})
+\item a maximum number of missing values allowed (\code{n})
 \item a maximum number of consecutive missing values allowed (\code{consec}),
 and
-\item a minimum number of non-missing values required (\code{na_non_na}).
+\item a minimum number of non-missing values required (\code{n_non}).
 }
 
 Any number of checks may be specified, including none. If multiple checks are
-specified, they must all be satisfied in order for missing values to be
+specified, they must all pass in order for missing values to be
 omitted. If no checks are specified then missing values are omitted, since
-this is considered as "all" checks passing. This is equivalent to \code{na.rm
-= TRUE}.
+this is considered as "all" checks passing.
 }
 \examples{
 x <- c(1, 3, NA, NA, NA, 4, 2, NA, 4, 6)

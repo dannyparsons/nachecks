@@ -50,8 +50,8 @@ are special cases of \code{\link{na_omit_if}}, which is the general case for
 specifying multiple checks.
 }
 \details{
-These functions replicate a subset of the functionality of
-\code{\link{na_omit_if}}.
+These functions replicate the functionality of
+\code{\link{na_omit_if}} as individual functions for single checks.
 
 For example, \code{na_omit_if_consec(x, 4)} is equivalent to
 \code{na_omit_if(x, consec = 4)}.

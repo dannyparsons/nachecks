@@ -2,7 +2,7 @@
 % Please edit documentation in R/na_check.R
 \name{na_check}
 \alias{na_check}
-\title{Check conditions of missing values}
+\title{Check missing values conditions}
 \usage{
 na_check(
   x,
@@ -14,7 +14,7 @@ na_check(
 )
 }
 \arguments{
-\item{x}{Vector to check the missing value properties of.}
+\item{x}{Vector to check the missing values properties of.}
 
 \item{prop}{The maximum proportion (0 to 1) of missing values allowed.}
 
@@ -34,17 +34,22 @@ proportion of missing values must be \strong{strictly} less than
 }
 \description{
 \code{na_check} checks conditions on missing values in a vector. If all the
-checks pass it returns \code{TRUE}, otherwise \code{FALSE}. There are four
-type of checks possible to specify: proportion and number of missing values,
-maximum number of consecutive missing values, and number of non-missing
-values.
+checks pass it returns \code{TRUE}, otherwise \code{FALSE}.
 }
 \details{
-\code{prop}, \code{n}, \code{consec} and \code{n_non} are optional and any
-number of conditions may be specified, including none. If no checks are
-specified then \code{TRUE} is returned, since this is considered as "all"
-checks passing. If multiple conditions are specified, they must all be
-satisfied to return \code{TRUE}.
+There are four type of checks available:
+\itemize{
+\item a maximum proportion of missing values allowed (\code{prop})
+\item a maximum number of missing values allowed (\code{n})
+\item a maximum number of consecutive missing values allowed (\code{consec}),
+and
+\item a minimum number of non-missing values required (\code{n_non}).
+}
+
+Any number of checks may be specified, including none. If multiple checks are
+specified, they must all pass in order to return \code{TRUE}.
+If no checks are specified then \code{TRUE} is returned, since
+this is considered as "all" checks passing.
 }
 \examples{
 x <- c(1:3, NA, NA, NA, 4, NA, NA, 3)
