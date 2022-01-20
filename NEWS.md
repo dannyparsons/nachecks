@@ -1,3 +1,19 @@
-# naflex 0.0.0.9000
+# naflex 1.0.0
 
-* Added a `NEWS.md` file to track changes to the package.
+* Initial CRAN release
+
+## Features
+
+* `na_omit_if` function for conditionally removing missing values if specified checks pass.
+
+* Four types of checks are available:
+
+  * `prop`: the maximum proportion (0 to 1) of missing values allowed
+  * `n`: the maximum number of missing values allowed
+  * `consec`: the maximum number of consecutive missing values allowed, and
+  * `n_non`: the minimum number of non-missing values required.
+
+
+* Four `na_omit_if_*` functions similar to `na_omit_if()` but for individual checks only
+* `na_check()` and four `na_check_*` function corresponding to the `na_omit_if` functions but return `TRUE` or `FALSE`
+* Four `na_*` functions for calculating the properties of missing values in a vector used in other functions

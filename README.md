@@ -62,8 +62,16 @@ routinely and efficiently as part of calculations.
 
 ## Installation
 
+Install the current release from CRAN:
+
 ``` r
-# Install the development version from GitHub:
+install.packages("naflex")
+```
+
+Or install the latest development version from GitHub:
+
+``` r
+# install.packages("devtools")
 devtools::install_github("dannyparsons/naflex")
 ```
 
@@ -218,8 +226,8 @@ ifelse(max(m) <= 5, mean(x, na.rm = TRUE), NA)
 #> [1] 4.142857
 ```
 
-# References
+## References
 
 <sup id="f1">1</sup>
-<a href="https://library.wmo.int/index.php?lvl=notice_display&id=20130#.XljKS84zZnI">WMO
+<a href="https://library.wmo.int/index.php?lvl=notice_display&id=20130#.XljKS84zZnI" target="_blank">WMO
 Guidelines on the Calculation of Climate Normals</a> [↩](#a1)

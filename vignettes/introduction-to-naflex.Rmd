@@ -1,0 +1,11 @@
+---
+title: "Introduction to naflex"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction-to-naflex}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r child="fragments/overview.Rmd"}
+```

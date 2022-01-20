@@ -6,3 +6,5 @@
 ^README\.html$
 ^\.github$
 ^LICENSE\.md$
+^doc$
+^Meta$
