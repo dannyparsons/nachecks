@@ -1,15 +1,16 @@
 Type: Package
 Package: naflex
-Title: Omit Missing Values Conditionally using Flexible Checks
-Version: 0.0.0.9000
-Authors@R: 
-    person(give = "Danny", 
-    family = "Parsons", 
+Title: Flexible Options for Handling Missing Values
+Version: 0.1.0
+Authors@R: c(
+    person("Danny", "Parsons", 
     email = "danny@idems.international", 
     role = c("aut", "cre"),
-    comment = c(ORCID = "https://orcid.org/0000-0002-8333-9880"))
-Description: For use in summary functions to omit missing values based on
-    specified conditions.
+    comment = c(ORCID = "https://orcid.org/0000-0002-8333-9880")),
+    person("Shadrack", "Kibet", 
+    role = "aut"))
+Description: For use in summary functions to omit missing values 
+    conditionally using specified checks.
 License: LGPL (>= 3)
 URL: https://github.com/dannyparsons/naflex
 BugReports: https://github.com/dannyparsons/naflex/issues

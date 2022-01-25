@@ -3,7 +3,7 @@
 \docType{package}
 \name{naflex}
 \alias{naflex}
-\title{naflex: Flexible missing value checks and omit functions.}
+\title{naflex: Flexible Options for Handling Missing Values}
 \description{
 The \code{naflex} package provides additional flexibility for handling
 missing values in summary functions beyond the two extreme options

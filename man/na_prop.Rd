@@ -19,7 +19,7 @@ na_non_na(x)
 \item{x}{A vector to calculate the missing values property of.}
 }
 \value{
-Each function returns a single number, a proportion (0 to 1) or a count.
+Each function returns a number: a proportion (0 to 1) or a count.
 }
 \description{
 A set of functions for calculating missing values properties of a vector.

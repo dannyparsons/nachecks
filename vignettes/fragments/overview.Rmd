@@ -18,7 +18,7 @@ In many cases, something in between these two extremes is often more appropriate
 
 ## Motivation
 
-The motivating application for producing this package was the calculation of *Climate Normals*: Long term averages of surface meteorological measurements e.g. total rainfall and mean temperature that provide benchmark information about the climate at specific locations. The World Meteorological Organization (WMO) Guidelines on the Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> provides recommendations to standardise these calculations across countries, including handling of missing values.
+The motivating application for producing this package was the calculation of *Climate Normals*: Long term averages of surface meteorological measurements that provide benchmark information about the climate at specific locations e.g. total rainfall and mean temperature. The World Meteorological Organization (WMO) Guidelines on the Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> provides recommendations to standardise these calculations across countries, including handling of missing values.
 
 For example, it recommendations that a monthly mean value calculated from daily values should only be calculated when there are no more than `10` missing values in the month and no more than `4` days of consecutive missing values. Adhering to such rules using base R requires doing further calculations and increasing the complexity and length of code. The aim of `naflex` is to make it easier to apply such rules routinely and efficiently as part of calculations.
 
@@ -79,7 +79,7 @@ Note that you should not use `na_omit_if` with `na.rm = TRUE` in the summary fun
 
 ## How `naflex` works & more details
 
-`na_omit_if` works by removing the missing values from `x` if the checks pass, and leaves `x` unmodified otherwise.
+`na_omit_if` works by removing the missing values from `x` if the checks pass, and leaving `x` unmodified otherwise.
 
 ```{r}
 # Missing values removed

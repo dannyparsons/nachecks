@@ -21,7 +21,7 @@
 #' @param x A vector to calculate the missing values property of.
 #'
 #' @return
-#' Each function returns a single number, a proportion (0 to 1) or a count.
+#' Each function returns a number: a proportion (0 to 1) or a count.
 #'
 #' @export
 #' @examples

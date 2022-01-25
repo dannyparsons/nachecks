@@ -1,4 +1,4 @@
-#' naflex: Flexible missing value checks and omit functions.
+#' naflex: Flexible Options for Handling Missing Values
 #'
 #' The \code{naflex} package provides additional flexibility for handling
 #' missing values in summary functions beyond the two extreme options

@@ -1,4 +1,4 @@
-# naflex 1.0.0
+# naflex 0.1.0
 
 * Initial CRAN release
 
