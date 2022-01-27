@@ -7,11 +7,12 @@
 
 [![R-CMD-check](https://github.com/dannyparsons/naflex/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dannyparsons/naflex/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/dannyparsons/naflex/branch/master/graph/badge.svg?token=MSQKXE5UYR)](https://app.codecov.io/gh/dannyparsons/naflex)
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/naflex)](https://cran.r-project.org/package=naflex)
 [![license](https://img.shields.io/badge/license-LGPL%20(%3E=%203)-lightgrey.svg)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+[![DOI](https://zenodo.org/badge/242815229.svg)](https://zenodo.org/badge/latestdoi/242815229)
 <!-- badges: end -->
 
 ## Overview
@@ -45,9 +46,9 @@ checks:
 
 The motivating application for producing this package was the
 calculation of *Climate Normals*: Long term averages of surface
-meteorological measurements e.g. total rainfall and mean temperature
-that provide benchmark information about the climate at specific
-locations. The World Meteorological Organization (WMO) Guidelines on the
+meteorological measurements that provide benchmark information about the
+climate at specific locations e.g. total rainfall and mean temperature.
+The World Meteorological Organization (WMO) Guidelines on the
 Calculation of Climate Normals<sup id="a1">[1](#f1)</sup> provides
 recommendations to standardise these calculations across countries,
 including handling of missing values.
@@ -137,7 +138,7 @@ checks are essentially ignored.
 ## How `naflex` works & more details
 
 `na_omit_if` works by removing the missing values from `x` if the checks
-pass, and leaves `x` unmodified otherwise.
+pass, and leaving `x` unmodified otherwise.
 
 ``` r
 # Missing values removed
