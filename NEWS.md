@@ -1,3 +1,9 @@
+# naflex 0.1.1
+
+* Internal updates and bug fixes:
+* Added "_PACKAGE" to naflex.R, ensuring proper package structure.
+* Updated the package testing and build checks, which were out of date and causing failures. Now using the standard checks recommended for R packages.
+
 # naflex 0.1.0
 
 * Initial CRAN release

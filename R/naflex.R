@@ -32,4 +32,5 @@
 #' within summary functions.
 #' @docType package
 #' @name naflex
+"_PACKAGE"
 NULL

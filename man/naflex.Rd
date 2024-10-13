@@ -3,6 +3,7 @@
 \docType{package}
 \name{naflex}
 \alias{naflex}
+\alias{naflex-package}
 \title{naflex: Flexible Options for Handling Missing Values}
 \description{
 The \code{naflex} package provides additional flexibility for handling
@@ -36,4 +37,21 @@ In particular \code{naflex} provides four types of missing value checks:
 
 These checks can be used individually or in combination with each other
 within summary functions.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/dannyparsons/naflex}
+  \item Report bugs at \url{https://github.com/dannyparsons/naflex/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Danny Parsons \email{danny@idems.international} (\href{https://orcid.org/0000-0002-8333-9880}{ORCID})
+
+Authors:
+\itemize{
+  \item Shadrack Kibet
+}
+
 }
